@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dashReportingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CallTransactionMaster">
+          <Key>
+            <PropertyRef Name="CTId" />
+          </Key>
+          <Property Name="CTId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="SalesAssociateName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="TotalNumberOfCall" Type="int" Nullable="false" />
+          <Property Name="TotalQualityOfCall" Type="int" Nullable="false" />
+          <Property Name="TotalGoogleMeetCall" Type="int" Nullable="false" />
+          <Property Name="RevenueGenerate" Type="money" Nullable="false" />
+          <Property Name="TotalTalkTime" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="InsertedBy" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampaignMaster">
+          <Key>
+            <PropertyRef Name="CId" />
+          </Key>
+          <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LinkedInUser" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CampaignCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CandidateMaster">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Name="CandidateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CandidateName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CandidateEmailId" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CandidateMarketingEmailId" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CandidatePersonalNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CandidateMarketingNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="InsertedBy" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TechnologyName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="VisaStatus" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AssignTo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OtherDetails" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ClientMaster">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClientEmaiId" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RefServiceId" Type="int" Nullable="false" />
+          <Property Name="RefRecurringId" Type="int" Nullable="false" />
+          <Property Name="RefTechnologyId" Type="int" Nullable="false" />
+          <Property Name="SalesAssociateName" Type="int" Nullable="false" />
+          <Property Name="TotalAmount" Type="money" Nullable="false" />
+          <Property Name="Paid" Type="money" Nullable="false" />
+          <Property Name="EnteryDate" Type="date" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobPortalMaster">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PortalName" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinkedInMaster">
+          <Key>
+            <PropertyRef Name="LId" />
+          </Key>
+          <Property Name="LId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeadDate" Type="date" />
+          <Property Name="LeadBy" Type="varchar" MaxLength="100" />
+          <Property Name="LeadType" Type="varchar" MaxLength="100" />
+          <Property Name="LinkedInUrl" Type="varchar" MaxLength="500" />
+          <Property Name="CandidateName" Type="varchar" MaxLength="100" />
+          <Property Name="CandidateNumber" Type="varchar" MaxLength="100" />
+          <Property Name="LinkedInEmailid" Type="varchar" MaxLength="300" />
+          <Property Name="CandidateLocation" Type="varchar" MaxLength="300" />
+          <Property Name="TechnologyName" Type="varchar" MaxLength="200" />
+          <Property Name="AssignedToSalesAssociate" Type="varchar" MaxLength="200" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="Feedback" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="RecuringMaster">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefClientId" Type="int" Nullable="false" />
+          <Property Name="Payment" Type="money" Nullable="false" />
+          <Property Name="ReceivedIn" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SentEmailReminder" Type="bit" Nullable="false" />
+          <Property Name="IsPaid" Type="bit" Nullable="false" />
+          <Property Name="DueDate" Type="date" Nullable="false" />
+          <Property Name="PaidDate" Type="date" />
+        </EntityType>
+        <EntityType Name="RecurringMaster">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefClientId" Type="int" Nullable="false" />
+          <Property Name="Payment" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReceivedIn" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="SentEmailReminder" Type="bit" Nullable="false" />
+          <Property Name="IsPaid" Type="bit" Nullable="false" />
+          <Property Name="DueDate" Type="date" Nullable="false" />
+          <Property Name="PaidDate" Type="date" />
+        </EntityType>
+        <EntityType Name="RecurringType">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Installment" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="ReportSubmissionDetails">
+          <Key>
+            <PropertyRef Name="ReportSId" />
+          </Key>
+          <Property Name="ReportSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="CandidateName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TeamLeadName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RecruiterName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Technology" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VisaStatus" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CandidateEmailId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CandidateMobileNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TotalSubmission" Type="int" Nullable="false" />
+          <Property Name="TotalInterview" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesKIPMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DailyCalls" Type="int" Nullable="false" />
+          <Property Name="DailyQualityCalls" Type="int" Nullable="false" />
+          <Property Name="QualityCallMin" Type="int" Nullable="false" />
+          <Property Name="AverageCallMin" Type="int" Nullable="false" />
+          <Property Name="TargetedRevenue" Type="money" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="CurrentKPI" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesKPIMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DailyCalls" Type="int" Nullable="false" />
+          <Property Name="DailyQualityCalls" Type="int" Nullable="false" />
+          <Property Name="QualityCallMin" Type="int" Nullable="false" />
+          <Property Name="AverageCallMin" Type="int" Nullable="false" />
+          <Property Name="TargetedRevenue" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="CurrentKPI" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceSale">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubmissionMaster">
+          <Key>
+            <PropertyRef Name="SubmissionId" />
+          </Key>
+          <Property Name="SubmissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubmissionBy" Type="varchar" MaxLength="100" />
+          <Property Name="SubmissionDate" Type="date" Nullable="false" />
+          <Property Name="CandidateName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="VendorCompanyName" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="VendorContactNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="JobPortal" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="JobDescription" Type="varchar(max)" />
+          <Property Name="InterviewDate" Type="date" />
+          <Property Name="SupportAssignedTo" Type="varchar" MaxLength="300" />
+          <Property Name="InterviewStatus" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="InterviewFeedback" Type="varchar(max)" Nullable="false" />
+          <Property Name="CandidateId" Type="int" />
+          <Property Name="InterviewTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamMaster">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TeamLeadName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ManagerName" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TechnologyMaster">
+          <Key>
+            <PropertyRef Name="TechId" />
+          </Key>
+          <Property Name="TechId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TechName" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UlincMaster">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="LinkedInUrl" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="ForwaredToSalesAssociate" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="LinkedInUser" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CampaignCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TimeForCall" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Feedback" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestAccepted" Type="bit" Nullable="false" />
+          <Property Name="IsPositive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RocketName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserImageUrl" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserBranch" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RefRoleId" Type="int" Nullable="false" />
+          <Property Name="IsLogin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VisaMaster">
+          <Key>
+            <PropertyRef Name="VId" />
+          </Key>
+          <Property Name="VId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VisaStatuName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ClientMas__RefRe__3E52440B">
+          <End Role="RecurringType" Type="Self.RecurringType" Multiplicity="1" />
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecurringType">
+              <PropertyRef Name="RId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="RefRecurringId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientMas__RefSe__3F466844">
+          <End Role="ServiceSale" Type="Self.ServiceSale" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSale">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="RefServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientMas__RefTe__403A8C7D">
+          <End Role="TechnologyMaster" Type="Self.TechnologyMaster" Multiplicity="1" />
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechnologyMaster">
+              <PropertyRef Name="TechId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="RefTechnologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientMas__Sales__412EB0B6">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="SalesAssociateName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecuringM__RefCl__4222D4EF">
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RecuringMaster" Type="Self.RecuringMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="RecuringMaster">
+              <PropertyRef Name="RefClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recurring__RefCl__4316F928">
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RecurringMaster" Type="Self.RecurringMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="RecurringMaster">
+              <PropertyRef Name="RefClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMaste__RefRo__440B1D61">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="RefRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dashReportingModelStoreContainer">
+          <EntitySet Name="CallTransactionMaster" EntityType="Self.CallTransactionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampaignMaster" EntityType="Self.CampaignMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateMaster" EntityType="Self.CandidateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientMaster" EntityType="Self.ClientMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobPortalMaster" EntityType="Self.JobPortalMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkedInMaster" EntityType="Self.LinkedInMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecuringMaster" EntityType="Self.RecuringMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecurringMaster" EntityType="Self.RecurringMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecurringType" EntityType="Self.RecurringType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportSubmissionDetails" EntityType="Self.ReportSubmissionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesKIPMaster" EntityType="Self.SalesKIPMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesKPIMaster" EntityType="Self.SalesKPIMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceSale" EntityType="Self.ServiceSale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubmissionMaster" EntityType="Self.SubmissionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamMaster" EntityType="Self.TeamMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechnologyMaster" EntityType="Self.TechnologyMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UlincMaster" EntityType="Self.UlincMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisaMaster" EntityType="Self.VisaMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ClientMas__RefRe__3E52440B" Association="Self.FK__ClientMas__RefRe__3E52440B">
+            <End Role="RecurringType" EntitySet="RecurringType" />
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientMas__RefSe__3F466844" Association="Self.FK__ClientMas__RefSe__3F466844">
+            <End Role="ServiceSale" EntitySet="ServiceSale" />
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientMas__RefTe__403A8C7D" Association="Self.FK__ClientMas__RefTe__403A8C7D">
+            <End Role="TechnologyMaster" EntitySet="TechnologyMaster" />
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientMas__Sales__412EB0B6" Association="Self.FK__ClientMas__Sales__412EB0B6">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecuringM__RefCl__4222D4EF" Association="Self.FK__RecuringM__RefCl__4222D4EF">
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+            <End Role="RecuringMaster" EntitySet="RecuringMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recurring__RefCl__4316F928" Association="Self.FK__Recurring__RefCl__4316F928">
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+            <End Role="RecurringMaster" EntitySet="RecurringMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMaste__RefRo__440B1D61" Association="Self.FK__UserMaste__RefRo__440B1D61">
+            <End Role="RoleMaster" EntitySet="RoleMaster" />
+            <End Role="UserMaster" EntitySet="UserMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dashReportingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CallTransactionMaster">
+          <Key>
+            <PropertyRef Name="CTId" />
+          </Key>
+          <Property Name="CTId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="SalesAssociateName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalNumberOfCall" Type="Int32" Nullable="false" />
+          <Property Name="TotalQualityOfCall" Type="Int32" Nullable="false" />
+          <Property Name="TotalGoogleMeetCall" Type="Int32" Nullable="false" />
+          <Property Name="RevenueGenerate" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TotalTalkTime" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="InsertedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampaignMaster">
+          <Key>
+            <PropertyRef Name="CId" />
+          </Key>
+          <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LinkedInUser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CampaignCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CandidateMaster">
+          <Key>
+            <PropertyRef Name="CandidateId" />
+          </Key>
+          <Property Name="CandidateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CandidateName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CandidateEmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CandidateMarketingEmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CandidatePersonalNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CandidateMarketingNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InsertedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TechnologyName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VisaStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AssignTo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OtherDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ClientMaster">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientEmaiId" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RefServiceId" Type="Int32" Nullable="false" />
+          <Property Name="RefRecurringId" Type="Int32" Nullable="false" />
+          <Property Name="RefTechnologyId" Type="Int32" Nullable="false" />
+          <Property Name="SalesAssociateName" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Paid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="EnteryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RecurringType" Relationship="Self.FK__ClientMas__RefRe__3E52440B" FromRole="ClientMaster" ToRole="RecurringType" />
+          <NavigationProperty Name="ServiceSale" Relationship="Self.FK__ClientMas__RefSe__3F466844" FromRole="ClientMaster" ToRole="ServiceSale" />
+          <NavigationProperty Name="TechnologyMaster" Relationship="Self.FK__ClientMas__RefTe__403A8C7D" FromRole="ClientMaster" ToRole="TechnologyMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK__ClientMas__Sales__412EB0B6" FromRole="ClientMaster" ToRole="UserMaster" />
+          <NavigationProperty Name="RecuringMasters" Relationship="Self.FK__RecuringM__RefCl__4222D4EF" FromRole="ClientMaster" ToRole="RecuringMaster" />
+          <NavigationProperty Name="RecurringMasters" Relationship="Self.FK__Recurring__RefCl__4316F928" FromRole="ClientMaster" ToRole="RecurringMaster" />
+        </EntityType>
+        <EntityType Name="JobPortalMaster">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PortalName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinkedInMaster">
+          <Key>
+            <PropertyRef Name="LId" />
+          </Key>
+          <Property Name="LId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeadDate" Type="DateTime" Precision="0" />
+          <Property Name="LeadBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LeadType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LinkedInUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CandidateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CandidateNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LinkedInEmailid" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="CandidateLocation" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TechnologyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedToSalesAssociate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Feedback" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RecuringMaster">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefClientId" Type="Int32" Nullable="false" />
+          <Property Name="Payment" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ReceivedIn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SentEmailReminder" Type="Boolean" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaidDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ClientMaster" Relationship="Self.FK__RecuringM__RefCl__4222D4EF" FromRole="RecuringMaster" ToRole="ClientMaster" />
+        </EntityType>
+        <EntityType Name="RecurringMaster">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefClientId" Type="Int32" Nullable="false" />
+          <Property Name="Payment" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReceivedIn" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SentEmailReminder" Type="Boolean" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaidDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ClientMaster" Relationship="Self.FK__Recurring__RefCl__4316F928" FromRole="RecurringMaster" ToRole="ClientMaster" />
+        </EntityType>
+        <EntityType Name="RecurringType">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Installment" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ClientMasters" Relationship="Self.FK__ClientMas__RefRe__3E52440B" FromRole="RecurringType" ToRole="ClientMaster" />
+        </EntityType>
+        <EntityType Name="ReportSubmissionDetail">
+          <Key>
+            <PropertyRef Name="ReportSId" />
+          </Key>
+          <Property Name="ReportSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="CandidateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeamLeadName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RecruiterName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Technology" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VisaStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CandidateEmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CandidateMobileNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalSubmission" Type="Int32" Nullable="false" />
+          <Property Name="TotalInterview" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoleMaster">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserMasters" Relationship="Self.FK__UserMaste__RefRo__440B1D61" FromRole="RoleMaster" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="SalesKIPMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DailyCalls" Type="Int32" Nullable="false" />
+          <Property Name="DailyQualityCalls" Type="Int32" Nullable="false" />
+          <Property Name="QualityCallMin" Type="Int32" Nullable="false" />
+          <Property Name="AverageCallMin" Type="Int32" Nullable="false" />
+          <Property Name="TargetedRevenue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentKPI" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesKPIMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DailyCalls" Type="Int32" Nullable="false" />
+          <Property Name="DailyQualityCalls" Type="Int32" Nullable="false" />
+          <Property Name="QualityCallMin" Type="Int32" Nullable="false" />
+          <Property Name="AverageCallMin" Type="Int32" Nullable="false" />
+          <Property Name="TargetedRevenue" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentKPI" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceSale">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ClientMasters" Relationship="Self.FK__ClientMas__RefSe__3F466844" FromRole="ServiceSale" ToRole="ClientMaster" />
+        </EntityType>
+        <EntityType Name="SubmissionMaster">
+          <Key>
+            <PropertyRef Name="SubmissionId" />
+          </Key>
+          <Property Name="SubmissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubmissionBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubmissionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CandidateName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VendorCompanyName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VendorContactNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JobPortal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InterviewDate" Type="DateTime" Precision="0" />
+          <Property Name="SupportAssignedTo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="InterviewStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InterviewFeedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CandidateId" Type="Int32" />
+          <Property Name="InterviewTime" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="TeamMaster">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeamLeadName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ManagerName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TechnologyMaster">
+          <Key>
+            <PropertyRef Name="TechId" />
+          </Key>
+          <Property Name="TechId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TechName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ClientMasters" Relationship="Self.FK__ClientMas__RefTe__403A8C7D" FromRole="TechnologyMaster" ToRole="ClientMaster" />
+        </EntityType>
+        <EntityType Name="UlincMaster">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LinkedInUrl" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ForwaredToSalesAssociate" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LinkedInUser" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CampaignCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TimeForCall" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RequestAccepted" Type="Boolean" Nullable="false" />
+          <Property Name="IsPositive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RocketName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserBranch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RefRoleId" Type="Int32" Nullable="false" />
+          <Property Name="IsLogin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClientMasters" Relationship="Self.FK__ClientMas__Sales__412EB0B6" FromRole="UserMaster" ToRole="ClientMaster" />
+          <NavigationProperty Name="RoleMaster" Relationship="Self.FK__UserMaste__RefRo__440B1D61" FromRole="UserMaster" ToRole="RoleMaster" />
+        </EntityType>
+        <EntityType Name="VisaMaster">
+          <Key>
+            <PropertyRef Name="VId" />
+          </Key>
+          <Property Name="VId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisaStatuName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ClientMas__RefRe__3E52440B">
+          <End Role="RecurringType" Type="Self.RecurringType" Multiplicity="1" />
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecurringType">
+              <PropertyRef Name="RId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="RefRecurringId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientMas__RefSe__3F466844">
+          <End Role="ServiceSale" Type="Self.ServiceSale" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSale">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="RefServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientMas__RefTe__403A8C7D">
+          <End Role="TechnologyMaster" Type="Self.TechnologyMaster" Multiplicity="1" />
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechnologyMaster">
+              <PropertyRef Name="TechId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="RefTechnologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientMas__Sales__412EB0B6">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ClientMaster">
+              <PropertyRef Name="SalesAssociateName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecuringM__RefCl__4222D4EF">
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RecuringMaster" Type="Self.RecuringMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="RecuringMaster">
+              <PropertyRef Name="RefClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recurring__RefCl__4316F928">
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RecurringMaster" Type="Self.RecurringMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="RecurringMaster">
+              <PropertyRef Name="RefClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMaste__RefRo__440B1D61">
+          <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleMaster">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="RefRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dashReportingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CallTransactionMasters" EntityType="Self.CallTransactionMaster" />
+          <EntitySet Name="CampaignMasters" EntityType="Self.CampaignMaster" />
+          <EntitySet Name="CandidateMasters" EntityType="Self.CandidateMaster" />
+          <EntitySet Name="ClientMasters" EntityType="Self.ClientMaster" />
+          <EntitySet Name="JobPortalMasters" EntityType="Self.JobPortalMaster" />
+          <EntitySet Name="LinkedInMasters" EntityType="Self.LinkedInMaster" />
+          <EntitySet Name="RecuringMasters" EntityType="Self.RecuringMaster" />
+          <EntitySet Name="RecurringMasters" EntityType="Self.RecurringMaster" />
+          <EntitySet Name="RecurringTypes" EntityType="Self.RecurringType" />
+          <EntitySet Name="ReportSubmissionDetails" EntityType="Self.ReportSubmissionDetail" />
+          <EntitySet Name="RoleMasters" EntityType="Self.RoleMaster" />
+          <EntitySet Name="SalesKIPMasters" EntityType="Self.SalesKIPMaster" />
+          <EntitySet Name="SalesKPIMasters" EntityType="Self.SalesKPIMaster" />
+          <EntitySet Name="ServiceSales" EntityType="Self.ServiceSale" />
+          <EntitySet Name="SubmissionMasters" EntityType="Self.SubmissionMaster" />
+          <EntitySet Name="TeamMasters" EntityType="Self.TeamMaster" />
+          <EntitySet Name="TechnologyMasters" EntityType="Self.TechnologyMaster" />
+          <EntitySet Name="UlincMasters" EntityType="Self.UlincMaster" />
+          <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
+          <EntitySet Name="VisaMasters" EntityType="Self.VisaMaster" />
+          <AssociationSet Name="FK__ClientMas__RefRe__3E52440B" Association="Self.FK__ClientMas__RefRe__3E52440B">
+            <End Role="RecurringType" EntitySet="RecurringTypes" />
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientMas__RefSe__3F466844" Association="Self.FK__ClientMas__RefSe__3F466844">
+            <End Role="ServiceSale" EntitySet="ServiceSales" />
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientMas__RefTe__403A8C7D" Association="Self.FK__ClientMas__RefTe__403A8C7D">
+            <End Role="TechnologyMaster" EntitySet="TechnologyMasters" />
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientMas__Sales__412EB0B6" Association="Self.FK__ClientMas__Sales__412EB0B6">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecuringM__RefCl__4222D4EF" Association="Self.FK__RecuringM__RefCl__4222D4EF">
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+            <End Role="RecuringMaster" EntitySet="RecuringMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recurring__RefCl__4316F928" Association="Self.FK__Recurring__RefCl__4316F928">
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+            <End Role="RecurringMaster" EntitySet="RecurringMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMaste__RefRo__440B1D61" Association="Self.FK__UserMaste__RefRo__440B1D61">
+            <End Role="RoleMaster" EntitySet="RoleMasters" />
+            <End Role="UserMaster" EntitySet="UserMasters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dashReportingModelStoreContainer" CdmEntityContainer="dashReportingEntities">
+          <EntitySetMapping Name="CallTransactionMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.CallTransactionMaster">
+              <MappingFragment StoreEntitySet="CallTransactionMaster">
+                <ScalarProperty Name="CTId" ColumnName="CTId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SalesAssociateName" ColumnName="SalesAssociateName" />
+                <ScalarProperty Name="TotalNumberOfCall" ColumnName="TotalNumberOfCall" />
+                <ScalarProperty Name="TotalQualityOfCall" ColumnName="TotalQualityOfCall" />
+                <ScalarProperty Name="TotalGoogleMeetCall" ColumnName="TotalGoogleMeetCall" />
+                <ScalarProperty Name="RevenueGenerate" ColumnName="RevenueGenerate" />
+                <ScalarProperty Name="TotalTalkTime" ColumnName="TotalTalkTime" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampaignMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.CampaignMaster">
+              <MappingFragment StoreEntitySet="CampaignMaster">
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="LinkedInUser" ColumnName="LinkedInUser" />
+                <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.CandidateMaster">
+              <MappingFragment StoreEntitySet="CandidateMaster">
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+                <ScalarProperty Name="CandidateEmailId" ColumnName="CandidateEmailId" />
+                <ScalarProperty Name="CandidateMarketingEmailId" ColumnName="CandidateMarketingEmailId" />
+                <ScalarProperty Name="CandidatePersonalNumber" ColumnName="CandidatePersonalNumber" />
+                <ScalarProperty Name="CandidateMarketingNumber" ColumnName="CandidateMarketingNumber" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="TechnologyName" ColumnName="TechnologyName" />
+                <ScalarProperty Name="VisaStatus" ColumnName="VisaStatus" />
+                <ScalarProperty Name="AssignTo" ColumnName="AssignTo" />
+                <ScalarProperty Name="OtherDetails" ColumnName="OtherDetails" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.ClientMaster">
+              <MappingFragment StoreEntitySet="ClientMaster">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientEmaiId" ColumnName="ClientEmaiId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="RefServiceId" ColumnName="RefServiceId" />
+                <ScalarProperty Name="RefRecurringId" ColumnName="RefRecurringId" />
+                <ScalarProperty Name="RefTechnologyId" ColumnName="RefTechnologyId" />
+                <ScalarProperty Name="SalesAssociateName" ColumnName="SalesAssociateName" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="EnteryDate" ColumnName="EnteryDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobPortalMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.JobPortalMaster">
+              <MappingFragment StoreEntitySet="JobPortalMaster">
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="PortalName" ColumnName="PortalName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinkedInMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.LinkedInMaster">
+              <MappingFragment StoreEntitySet="LinkedInMaster">
+                <ScalarProperty Name="LId" ColumnName="LId" />
+                <ScalarProperty Name="LeadDate" ColumnName="LeadDate" />
+                <ScalarProperty Name="LeadBy" ColumnName="LeadBy" />
+                <ScalarProperty Name="LeadType" ColumnName="LeadType" />
+                <ScalarProperty Name="LinkedInUrl" ColumnName="LinkedInUrl" />
+                <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+                <ScalarProperty Name="CandidateNumber" ColumnName="CandidateNumber" />
+                <ScalarProperty Name="LinkedInEmailid" ColumnName="LinkedInEmailid" />
+                <ScalarProperty Name="CandidateLocation" ColumnName="CandidateLocation" />
+                <ScalarProperty Name="TechnologyName" ColumnName="TechnologyName" />
+                <ScalarProperty Name="AssignedToSalesAssociate" ColumnName="AssignedToSalesAssociate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecuringMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.RecuringMaster">
+              <MappingFragment StoreEntitySet="RecuringMaster">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="RefClientId" ColumnName="RefClientId" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="ReceivedIn" ColumnName="ReceivedIn" />
+                <ScalarProperty Name="SentEmailReminder" ColumnName="SentEmailReminder" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecurringMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.RecurringMaster">
+              <MappingFragment StoreEntitySet="RecurringMaster">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="RefClientId" ColumnName="RefClientId" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="ReceivedIn" ColumnName="ReceivedIn" />
+                <ScalarProperty Name="SentEmailReminder" ColumnName="SentEmailReminder" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecurringTypes">
+            <EntityTypeMapping TypeName="dashReportingModel.RecurringType">
+              <MappingFragment StoreEntitySet="RecurringType">
+                <ScalarProperty Name="RId" ColumnName="RId" />
+                <ScalarProperty Name="RType" ColumnName="RType" />
+                <ScalarProperty Name="Installment" ColumnName="Installment" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportSubmissionDetails">
+            <EntityTypeMapping TypeName="dashReportingModel.ReportSubmissionDetail">
+              <MappingFragment StoreEntitySet="ReportSubmissionDetails">
+                <ScalarProperty Name="ReportSId" ColumnName="ReportSId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+                <ScalarProperty Name="TeamLeadName" ColumnName="TeamLeadName" />
+                <ScalarProperty Name="RecruiterName" ColumnName="RecruiterName" />
+                <ScalarProperty Name="Technology" ColumnName="Technology" />
+                <ScalarProperty Name="VisaStatus" ColumnName="VisaStatus" />
+                <ScalarProperty Name="CandidateEmailId" ColumnName="CandidateEmailId" />
+                <ScalarProperty Name="CandidateMobileNumber" ColumnName="CandidateMobileNumber" />
+                <ScalarProperty Name="TotalSubmission" ColumnName="TotalSubmission" />
+                <ScalarProperty Name="TotalInterview" ColumnName="TotalInterview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.RoleMaster">
+              <MappingFragment StoreEntitySet="RoleMaster">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesKIPMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.SalesKIPMaster">
+              <MappingFragment StoreEntitySet="SalesKIPMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DailyCalls" ColumnName="DailyCalls" />
+                <ScalarProperty Name="DailyQualityCalls" ColumnName="DailyQualityCalls" />
+                <ScalarProperty Name="QualityCallMin" ColumnName="QualityCallMin" />
+                <ScalarProperty Name="AverageCallMin" ColumnName="AverageCallMin" />
+                <ScalarProperty Name="TargetedRevenue" ColumnName="TargetedRevenue" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CurrentKPI" ColumnName="CurrentKPI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesKPIMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.SalesKPIMaster">
+              <MappingFragment StoreEntitySet="SalesKPIMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DailyCalls" ColumnName="DailyCalls" />
+                <ScalarProperty Name="DailyQualityCalls" ColumnName="DailyQualityCalls" />
+                <ScalarProperty Name="QualityCallMin" ColumnName="QualityCallMin" />
+                <ScalarProperty Name="AverageCallMin" ColumnName="AverageCallMin" />
+                <ScalarProperty Name="TargetedRevenue" ColumnName="TargetedRevenue" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CurrentKPI" ColumnName="CurrentKPI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceSales">
+            <EntityTypeMapping TypeName="dashReportingModel.ServiceSale">
+              <MappingFragment StoreEntitySet="ServiceSale">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubmissionMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.SubmissionMaster">
+              <MappingFragment StoreEntitySet="SubmissionMaster">
+                <ScalarProperty Name="SubmissionId" ColumnName="SubmissionId" />
+                <ScalarProperty Name="SubmissionBy" ColumnName="SubmissionBy" />
+                <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
+                <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorCompanyName" ColumnName="VendorCompanyName" />
+                <ScalarProperty Name="VendorContactNumber" ColumnName="VendorContactNumber" />
+                <ScalarProperty Name="JobPortal" ColumnName="JobPortal" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="InterviewDate" ColumnName="InterviewDate" />
+                <ScalarProperty Name="SupportAssignedTo" ColumnName="SupportAssignedTo" />
+                <ScalarProperty Name="InterviewStatus" ColumnName="InterviewStatus" />
+                <ScalarProperty Name="InterviewFeedback" ColumnName="InterviewFeedback" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="InterviewTime" ColumnName="InterviewTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.TeamMaster">
+              <MappingFragment StoreEntitySet="TeamMaster">
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="TeamLeadName" ColumnName="TeamLeadName" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechnologyMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.TechnologyMaster">
+              <MappingFragment StoreEntitySet="TechnologyMaster">
+                <ScalarProperty Name="TechId" ColumnName="TechId" />
+                <ScalarProperty Name="TechName" ColumnName="TechName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UlincMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.UlincMaster">
+              <MappingFragment StoreEntitySet="UlincMaster">
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="LinkedInUrl" ColumnName="LinkedInUrl" />
+                <ScalarProperty Name="ForwaredToSalesAssociate" ColumnName="ForwaredToSalesAssociate" />
+                <ScalarProperty Name="LinkedInUser" ColumnName="LinkedInUser" />
+                <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+                <ScalarProperty Name="TimeForCall" ColumnName="TimeForCall" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="RequestAccepted" ColumnName="RequestAccepted" />
+                <ScalarProperty Name="IsPositive" ColumnName="IsPositive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="RocketName" ColumnName="RocketName" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserImageUrl" ColumnName="UserImageUrl" />
+                <ScalarProperty Name="UserBranch" ColumnName="UserBranch" />
+                <ScalarProperty Name="RefRoleId" ColumnName="RefRoleId" />
+                <ScalarProperty Name="IsLogin" ColumnName="IsLogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisaMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.VisaMaster">
+              <MappingFragment StoreEntitySet="VisaMaster">
+                <ScalarProperty Name="VId" ColumnName="VId" />
+                <ScalarProperty Name="VisaStatuName" ColumnName="VisaStatuName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
