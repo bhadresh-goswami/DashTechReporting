@@ -25,25 +25,18 @@ namespace DTRS.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CallTransactionMaster> CallTransactionMasters { get; set; }
-        public virtual DbSet<CampaignMaster> CampaignMasters { get; set; }
         public virtual DbSet<CandidateMaster> CandidateMasters { get; set; }
-        public virtual DbSet<ClientMaster> ClientMasters { get; set; }
+        public virtual DbSet<CandidateTimeLine> CandidateTimeLines { get; set; }
+        public virtual DbSet<CommentDetail> CommentDetails { get; set; }
         public virtual DbSet<JobPortalMaster> JobPortalMasters { get; set; }
-        public virtual DbSet<LinkedInMaster> LinkedInMasters { get; set; }
-        public virtual DbSet<RecuringMaster> RecuringMasters { get; set; }
+        public virtual DbSet<LocationMaster> LocationMasters { get; set; }
         public virtual DbSet<RecurringMaster> RecurringMasters { get; set; }
         public virtual DbSet<RecurringType> RecurringTypes { get; set; }
-        public virtual DbSet<ReportSubmissionDetail> ReportSubmissionDetails { get; set; }
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
-        public virtual DbSet<SalesKIPMaster> SalesKIPMasters { get; set; }
-        public virtual DbSet<SalesKPIMaster> SalesKPIMasters { get; set; }
-        public virtual DbSet<ServiceSale> ServiceSales { get; set; }
-        public virtual DbSet<SubmissionMaster> SubmissionMasters { get; set; }
-        public virtual DbSet<TeamMaster> TeamMasters { get; set; }
+        public virtual DbSet<SalesServiceMaster> SalesServiceMasters { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TechnologyMaster> TechnologyMasters { get; set; }
-        public virtual DbSet<UlincMaster> UlincMasters { get; set; }
-        public virtual DbSet<UserMaster> UserMasters { get; set; }
-        public virtual DbSet<VisaMaster> VisaMasters { get; set; }
+        public virtual DbSet<UserAccountDetail> UserAccountDetails { get; set; }
+        public virtual DbSet<VisaTitleMaster> VisaTitleMasters { get; set; }
     }
 }

@@ -14,15 +14,15 @@ namespace DTRS.Models
     
     public partial class RecurringMaster
     {
-        public int PaymentId { get; set; }
-        public int RefClientId { get; set; }
-        public decimal Payment { get; set; }
-        public string ReceivedIn { get; set; }
-        public bool SentEmailReminder { get; set; }
-        public bool IsPaid { get; set; }
+        public int RecurringId { get; set; }
         public System.DateTime DueDate { get; set; }
         public Nullable<System.DateTime> PaidDate { get; set; }
+        public decimal Amount { get; set; }
+        public int RefCandidateId { get; set; }
+        public string ReceivedIn { get; set; }
+        public Nullable<bool> SendReminderEmail { get; set; }
+        public string PaymentStatus { get; set; }
     
-        public virtual ClientMaster ClientMaster { get; set; }
+        public virtual CandidateMaster CandidateMaster { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace DTRS.Models
     
     public partial class JobPortalMaster
     {
-        public int PId { get; set; }
-        public string PortalName { get; set; }
+        public int PortalId { get; set; }
+        public string PortalTitle { get; set; }
     }
 }

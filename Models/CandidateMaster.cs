@@ -14,17 +14,40 @@ namespace DTRS.Models
     
     public partial class CandidateMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CandidateMaster()
+        {
+            this.CandidateTimeLines = new HashSet<CandidateTimeLine>();
+            this.CommentDetails = new HashSet<CommentDetail>();
+            this.RecurringMasters = new HashSet<RecurringMaster>();
+        }
+    
         public int CandidateId { get; set; }
         public string CandidateName { get; set; }
-        public string CandidateEmailId { get; set; }
-        public string CandidateMarketingEmailId { get; set; }
-        public string CandidatePersonalNumber { get; set; }
-        public string CandidateMarketingNumber { get; set; }
-        public string InsertedBy { get; set; }
-        public string TechnologyName { get; set; }
+        public string EmailId { get; set; }
+        public string MobileNumber { get; set; }
+        public Nullable<int> RefSalesAssociate { get; set; }
+        public int RefRecurringTypeId { get; set; }
+        public int RefServiceId { get; set; }
+        public decimal TotlaAmount { get; set; }
+        public decimal PaidAmount { get; set; }
+        public System.DateTime Date { get; set; }
+        public string PaymentStatus { get; set; }
+        public string CandidateStatus { get; set; }
+        public string Remarks { get; set; }
+        public Nullable<System.DateTime> MarketingStartDate { get; set; }
         public string VisaStatus { get; set; }
-        public string AssignTo { get; set; }
-        public string OtherDetails { get; set; }
-        public string Status { get; set; }
+        public int TechnologyId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateTimeLine> CandidateTimeLines { get; set; }
+        public virtual RecurringType RecurringType { get; set; }
+        public virtual UserAccountDetail UserAccountDetail { get; set; }
+        public virtual SalesServiceMaster SalesServiceMaster { get; set; }
+        public virtual TechnologyMaster TechnologyMaster { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommentDetail> CommentDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RecurringMaster> RecurringMasters { get; set; }
     }
 }

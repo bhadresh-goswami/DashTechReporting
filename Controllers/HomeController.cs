@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTRS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,5 +15,19 @@ namespace DTRS.Controllers
 
             return View();
         }
+
+        public ActionResult admin()
+        {
+            sessionModel m = new sessionModel();
+            m.UserId = 1;
+            m.UserRocketName = "bhadresh.gosai";
+            m.UserRole = "admin";
+            m.defaultUrl = Url.Action("index","dashboard",new { @area = "admin" });
+            Session["User"] = m;
+            Session.Timeout = 50;
+           
+            return Redirect(m.defaultUrl);
+        }
     }
+
 }

@@ -17,15 +17,15 @@ namespace DTRS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RecurringType()
         {
-            this.ClientMasters = new HashSet<ClientMaster>();
+            this.CandidateMasters = new HashSet<CandidateMaster>();
         }
     
-        public int RId { get; set; }
-        public string RType { get; set; }
-        public Nullable<int> Installment { get; set; }
-        public Nullable<decimal> Amount { get; set; }
+        public int RecurringTypeId { get; set; }
+        public string RecurringTitle { get; set; }
+        public decimal Amount { get; set; }
+        public int Installment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientMaster> ClientMasters { get; set; }
+        public virtual ICollection<CandidateMaster> CandidateMasters { get; set; }
     }
 }

@@ -1,0 +1,42 @@
+﻿@model DTRS.Models.RecurringType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RecurringType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RecurringTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecurringTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Installment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Installment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecurringTypeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

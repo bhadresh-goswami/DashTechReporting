@@ -17,13 +17,13 @@ namespace DTRS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RoleMaster()
         {
-            this.UserMasters = new HashSet<UserMaster>();
+            this.UserAccountDetails = new HashSet<UserAccountDetail>();
         }
     
         public int RoleId { get; set; }
-        public string RoleName { get; set; }
+        public string RoleTitle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters { get; set; }
+        public virtual ICollection<UserAccountDetail> UserAccountDetails { get; set; }
     }
 }
