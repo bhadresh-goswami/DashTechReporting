@@ -17,13 +17,13 @@ namespace DTRS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TechnologyMaster()
         {
-            this.ClientMasters = new HashSet<ClientMaster>();
+            this.CandidateMasters = new HashSet<CandidateMaster>();
         }
     
         public int TechId { get; set; }
-        public string TechName { get; set; }
+        public string TechTitle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientMaster> ClientMasters { get; set; }
+        public virtual ICollection<CandidateMaster> CandidateMasters { get; set; }
     }
 }

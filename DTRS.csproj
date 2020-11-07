@@ -136,6 +136,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\dashboardController.cs" />
+    <Compile Include="Areas\admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\admin\Controllers\masteradminController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -168,6 +169,13 @@
     <Compile Include="Areas\imports\importsAreaRegistration.cs" />
     <Compile Include="Areas\leadgenerate\Controllers\dashboardController.cs" />
     <Compile Include="Areas\leadgenerate\leadgenerateAreaRegistration.cs" />
+    <Compile Include="Areas\manage\Controllers\JobPortalController.cs" />
+    <Compile Include="Areas\manage\Controllers\RecurringTypesController.cs" />
+    <Compile Include="Areas\manage\Controllers\RolesController.cs" />
+    <Compile Include="Areas\manage\Controllers\SalesServiceController.cs" />
+    <Compile Include="Areas\manage\Controllers\TechnologyController.cs" />
+    <Compile Include="Areas\manage\Controllers\VisaTitleController.cs" />
+    <Compile Include="Areas\manage\manageAreaRegistration.cs" />
     <Compile Include="Areas\marketing\Controllers\dashboardController.cs" />
     <Compile Include="Areas\marketing\marketingAreaRegistration.cs" />
     <Compile Include="Areas\reports\reportsAreaRegistration.cs" />
@@ -183,16 +191,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CallTransactionMaster.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CampaignMaster.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CandidateMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ClientMaster.cs">
+    <Compile Include="Models\CandidateTimeLine.cs">
+      <DependentUpon>dbReporting.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommentDetail.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\dbReporting.Context.cs">
@@ -210,13 +215,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbReporting.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\goalModel.cs" />
     <Compile Include="Models\JobPortalMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LinkedInMaster.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RecuringMaster.cs">
+    <Compile Include="Models\LocationMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RecurringMaster.cs">
@@ -225,37 +228,23 @@
     <Compile Include="Models\RecurringType.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ReportSubmissionDetail.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\RoleMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SalesKIPMaster.cs">
+    <Compile Include="Models\SalesServiceMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SalesKPIMaster.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ServiceSale.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SubmissionMaster.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TeamMaster.cs">
+    <Compile Include="Models\sessionModel.cs" />
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TechnologyMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UlincMaster.cs">
+    <Compile Include="Models\UserAccountDetail.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserMaster.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VisaMaster.cs">
+    <Compile Include="Models\VisaTitleMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2078,6 +2067,47 @@
     <Content Include="Areas\imports\Views\web.config" />
     <Content Include="Areas\technical\Views\web.config" />
     <Content Include="Areas\leadgenerate\Views\web.config" />
+    <Content Include="Areas\admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\admin\Views\dashboard\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Locations\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Locations\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Locations\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Locations\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Locations\Index.cshtml" />
+    <Content Include="Areas\manage\Views\web.config" />
+    <Content Include="Areas\manage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\manage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\manage\Views\JobPortal\Create.cshtml" />
+    <Content Include="Areas\manage\Views\JobPortal\Delete.cshtml" />
+    <Content Include="Areas\manage\Views\JobPortal\Details.cshtml" />
+    <Content Include="Areas\manage\Views\JobPortal\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\JobPortal\Index.cshtml" />
+    <Content Include="Areas\manage\Views\RecurringTypes\Create.cshtml" />
+    <Content Include="Areas\manage\Views\RecurringTypes\Delete.cshtml" />
+    <Content Include="Areas\manage\Views\RecurringTypes\Details.cshtml" />
+    <Content Include="Areas\manage\Views\RecurringTypes\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\RecurringTypes\Index.cshtml" />
+    <Content Include="Areas\manage\Views\SalesService\Create.cshtml" />
+    <Content Include="Areas\manage\Views\SalesService\Delete.cshtml" />
+    <Content Include="Areas\manage\Views\SalesService\Details.cshtml" />
+    <Content Include="Areas\manage\Views\SalesService\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\SalesService\Index.cshtml" />
+    <Content Include="Areas\manage\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\manage\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\manage\Views\Roles\Details.cshtml" />
+    <Content Include="Areas\manage\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\manage\Views\Technology\Create.cshtml" />
+    <Content Include="Areas\manage\Views\Technology\Delete.cshtml" />
+    <Content Include="Areas\manage\Views\Technology\Details.cshtml" />
+    <Content Include="Areas\manage\Views\Technology\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Technology\Index.cshtml" />
+    <Content Include="Areas\manage\Views\VisaTitle\Create.cshtml" />
+    <Content Include="Areas\manage\Views\VisaTitle\Delete.cshtml" />
+    <Content Include="Areas\manage\Views\VisaTitle\Details.cshtml" />
+    <Content Include="Areas\manage\Views\VisaTitle\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\VisaTitle\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2099,19 +2129,21 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\_header.cshtml" />
+    <Content Include="Views\Shared\_sidebar.cshtml" />
+    <Content Include="Views\Shared\_pageheader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Data\" />
-    <Folder Include="Areas\admin\Views\dashboard\" />
     <Folder Include="Areas\admin\Views\masteradmin\" />
-    <Folder Include="Areas\admin\Views\Shared\" />
     <Folder Include="Areas\imports\Controllers\" />
     <Folder Include="Areas\imports\Data\" />
     <Folder Include="Areas\imports\Views\Shared\" />
     <Folder Include="Areas\leadgenerate\Data\" />
     <Folder Include="Areas\leadgenerate\Views\dashboard\" />
     <Folder Include="Areas\leadgenerate\Views\Shared\" />
+    <Folder Include="Areas\manage\Data\" />
     <Folder Include="Areas\marketing\Data\" />
     <Folder Include="Areas\marketing\Views\dashboard\" />
     <Folder Include="Areas\marketing\Views\Shared\" />
