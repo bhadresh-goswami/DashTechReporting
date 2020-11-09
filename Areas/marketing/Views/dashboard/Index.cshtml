@@ -156,7 +156,7 @@
 
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-                        <table id="marketingTable" class="table table-bordered table-striped">
+                        <table id="marketingTable" class="table table-bordered table-striped  table-responsive">
                             <thead>
                                 <tr>
 
@@ -276,7 +276,7 @@
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
 
-                        <table id="trainingTable" class="table table-bordered table-striped">
+                        <table id="trainingTable" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
 
@@ -405,11 +405,9 @@
     //marketingTable
     //salesTable
     //trainingTable
+  
 
-    $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
-        $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
-    });
-    $("#marketingTable").DataTable({
+    var dt1 = $("#marketingTable").DataTable({
         "responsive": true,
         "autoWidth": false,
         "paging": true,
@@ -423,7 +421,7 @@
         ]
     });
 
-    $("#salesTable").DataTable({
+    var dt2 = $("#salesTable").DataTable({
         "responsive": true,
         "autoWidth": false,
         "paging": true,
@@ -436,7 +434,8 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
-    $("#trainingTable").DataTable({
+
+    var dt3 = $("#trainingTable").DataTable({
         "responsive": true,
         "autoWidth": false,
         "paging": true,
@@ -449,4 +448,11 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
+
+    //$("li").click(function () {
+    //    dt1.responsive.recalc();
+    //    dt2.responsive.recalc();
+    //    dt3.responsive.recalc();
+    //    alert("a");
+    //});
 </script>
