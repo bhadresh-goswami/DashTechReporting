@@ -1,0 +1,144 @@
+﻿@model DTRS.Models.CandidateMarketingDetail
+@using DTRS.Models
+@{
+    ViewBag.Title = "StartMarketing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var db = new dashReportingEntities();
+    CandidateMaster candidate = (CandidateMaster)ViewBag.data;
+}
+
+<form action="@Url.Action("StartMarketing","dashboard",new { @area = "marketing"})" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">@ViewBag.Title</h3>
+
+            @*<div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>*@
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="form-horizontal">
+                        <h4>CandidateMarketingDetail</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <input type="hidden" value="@candidate.CandidateId" id="RefCandidateId" name="RefCandidateId" />
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+                                    Candidate Name
+                                </th>
+
+
+                                <th>
+                                    Candidate Email ID
+                                </th>
+
+                                <th>
+                                    Candidate Mobile
+                                </th>
+                                <th>
+                                    Sales Associate
+                                </th>
+                                <th>Visa Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @candidate.CandidateName
+                                </td>
+                                <td>
+                                    @candidate.EmailId
+                                </td>
+                                <td>
+                                    @candidate.MobileNumber
+                                </td>
+                                <td>
+                                    @candidate.UserAccountDetail.RocketName
+                                </td>
+                                <td>
+                                    @candidate.VisaStatus
+                                </td>
+                                <td>
+                                    @candidate.Remarks
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Marketing Email Id
+                            </label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MarketingEmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MarketingEmailId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Marketing Contact Number</label>                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MarketingContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MarketingContactNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-2">Original Resume</label>                            <div class="col-md-10">
+                                <div class="col-md-10">
+                                    <input type="url" name="OriginalResume" class="form-control-file" />
+                                    @Html.ValidationMessageFor(model => model.OriginalResume, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-2">Marketing Resume</label>                            <div class="col-md-10">
+                                    <div class="col-md-10">
+                                        <input type="url" name="MarketingResume" class="form-control-file" required />
+                                        @Html.ValidationMessageFor(model => model.MarketingResume, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OtherRemarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.OtherRemarks, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.OtherRemarks, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LocationConcern, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.LocationConcern)
+                                            @Html.ValidationMessageFor(model => model.LocationConcern, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.RequiredLocationList, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.RequiredLocationList, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.RequiredLocationList, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</form>

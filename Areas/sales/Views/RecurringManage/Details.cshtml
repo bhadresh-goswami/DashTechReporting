@@ -1,0 +1,74 @@
+﻿@model DTRS.Models.RecurringMaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RecurringMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SendReminderEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SendReminderEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateMaster.CandidateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateMaster.CandidateName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecurringId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -20,6 +20,7 @@ namespace DTRS.Models
             this.CandidateTimeLines = new HashSet<CandidateTimeLine>();
             this.CommentDetails = new HashSet<CommentDetail>();
             this.RecurringMasters = new HashSet<RecurringMaster>();
+            this.CandidateMarketingDetails = new HashSet<CandidateMarketingDetail>();
         }
     
         public int CandidateId { get; set; }
@@ -29,7 +30,7 @@ namespace DTRS.Models
         public Nullable<int> RefSalesAssociate { get; set; }
         public int RefRecurringTypeId { get; set; }
         public int RefServiceId { get; set; }
-        public decimal TotlaAmount { get; set; }
+        public decimal TotalAmount { get; set; }
         public decimal PaidAmount { get; set; }
         public System.DateTime Date { get; set; }
         public string PaymentStatus { get; set; }
@@ -49,5 +50,7 @@ namespace DTRS.Models
         public virtual ICollection<CommentDetail> CommentDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RecurringMaster> RecurringMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
     }
 }

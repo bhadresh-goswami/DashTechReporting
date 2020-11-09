@@ -170,6 +170,7 @@
     <Compile Include="Areas\leadgenerate\Controllers\dashboardController.cs" />
     <Compile Include="Areas\leadgenerate\leadgenerateAreaRegistration.cs" />
     <Compile Include="Areas\manage\Controllers\JobPortalController.cs" />
+    <Compile Include="Areas\manage\Controllers\LocationController.cs" />
     <Compile Include="Areas\manage\Controllers\RecurringTypesController.cs" />
     <Compile Include="Areas\manage\Controllers\RolesController.cs" />
     <Compile Include="Areas\manage\Controllers\SalesServiceController.cs" />
@@ -177,19 +178,29 @@
     <Compile Include="Areas\manage\Controllers\VisaTitleController.cs" />
     <Compile Include="Areas\manage\manageAreaRegistration.cs" />
     <Compile Include="Areas\marketing\Controllers\dashboardController.cs" />
+    <Compile Include="Areas\marketing\Controllers\recruiterController.cs" />
+    <Compile Include="Areas\marketing\Controllers\teamleadController.cs" />
     <Compile Include="Areas\marketing\marketingAreaRegistration.cs" />
     <Compile Include="Areas\reports\reportsAreaRegistration.cs" />
+    <Compile Include="Areas\sales\Controllers\ClientManageController.cs" />
     <Compile Include="Areas\sales\Controllers\dashboardController.cs" />
+    <Compile Include="Areas\sales\Controllers\RecurringManageController.cs" />
     <Compile Include="Areas\sales\salesAreaRegistration.cs" />
     <Compile Include="Areas\technical\Controllers\expertController.cs" />
     <Compile Include="Areas\technical\Controllers\managerController.cs" />
     <Compile Include="Areas\technical\Controllers\teamleadController.cs" />
     <Compile Include="Areas\technical\technicalAreaRegistration.cs" />
+    <Compile Include="Areas\userdata\Controllers\TeamDetailsController.cs" />
+    <Compile Include="Areas\userdata\Controllers\UserManageController.cs" />
+    <Compile Include="Areas\userdata\userdataAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CandidateMarketingDetail.cs">
+      <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CandidateMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
@@ -236,6 +247,9 @@
     </Compile>
     <Compile Include="Models\sessionModel.cs" />
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>dbReporting.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamDetail.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TechnologyMaster.cs">
@@ -2108,6 +2122,41 @@
     <Content Include="Areas\manage\Views\VisaTitle\Details.cshtml" />
     <Content Include="Areas\manage\Views\VisaTitle\Edit.cshtml" />
     <Content Include="Areas\manage\Views\VisaTitle\Index.cshtml" />
+    <Content Include="Areas\userdata\Views\web.config" />
+    <Content Include="Areas\userdata\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\userdata\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\userdata\Views\UserManage\Create.cshtml" />
+    <Content Include="Areas\userdata\Views\UserManage\Delete.cshtml" />
+    <Content Include="Areas\userdata\Views\UserManage\Details.cshtml" />
+    <Content Include="Areas\userdata\Views\UserManage\Edit.cshtml" />
+    <Content Include="Areas\userdata\Views\UserManage\Index.cshtml" />
+    <Content Include="Areas\manage\Views\Location\Create.cshtml" />
+    <Content Include="Areas\manage\Views\Location\Delete.cshtml" />
+    <Content Include="Areas\manage\Views\Location\Details.cshtml" />
+    <Content Include="Areas\manage\Views\Location\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Location\Index.cshtml" />
+    <Content Include="Areas\sales\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\sales\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\sales\Views\ClientManage\Create.cshtml" />
+    <Content Include="Areas\sales\Views\ClientManage\Delete.cshtml" />
+    <Content Include="Areas\sales\Views\ClientManage\Details.cshtml" />
+    <Content Include="Areas\sales\Views\ClientManage\Edit.cshtml" />
+    <Content Include="Areas\sales\Views\ClientManage\Index.cshtml" />
+    <Content Include="Areas\sales\Views\RecurringManage\Create.cshtml" />
+    <Content Include="Areas\sales\Views\RecurringManage\Delete.cshtml" />
+    <Content Include="Areas\sales\Views\RecurringManage\Details.cshtml" />
+    <Content Include="Areas\sales\Views\RecurringManage\Edit.cshtml" />
+    <Content Include="Areas\sales\Views\RecurringManage\Index.cshtml" />
+    <Content Include="Areas\userdata\Views\TeamDetails\Create.cshtml" />
+    <Content Include="Areas\userdata\Views\TeamDetails\Delete.cshtml" />
+    <Content Include="Areas\userdata\Views\TeamDetails\Details.cshtml" />
+    <Content Include="Areas\userdata\Views\TeamDetails\Edit.cshtml" />
+    <Content Include="Areas\userdata\Views\TeamDetails\Index.cshtml" />
+    <Content Include="Areas\marketing\Views\recruiter\Index.cshtml" />
+    <Content Include="Areas\marketing\Views\teamlead\Index.cshtml" />
+    <Content Include="Areas\marketing\Views\dashboard\Index.cshtml" />
+    <Content Include="Areas\sales\Views\dashboard\Index.cshtml" />
+    <Content Include="Areas\marketing\Views\dashboard\StartMarketing.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2132,6 +2181,8 @@
     <Content Include="Views\Shared\_header.cshtml" />
     <Content Include="Views\Shared\_sidebar.cshtml" />
     <Content Include="Views\Shared\_pageheader.cshtml" />
+    <Content Include="Views\Shared\_changePassword.cshtml" />
+    <Content Include="Views\Shared\_alertShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2145,19 +2196,19 @@
     <Folder Include="Areas\leadgenerate\Views\Shared\" />
     <Folder Include="Areas\manage\Data\" />
     <Folder Include="Areas\marketing\Data\" />
-    <Folder Include="Areas\marketing\Views\dashboard\" />
     <Folder Include="Areas\marketing\Views\Shared\" />
     <Folder Include="Areas\reports\Controllers\" />
     <Folder Include="Areas\reports\Data\" />
     <Folder Include="Areas\reports\Views\Shared\" />
     <Folder Include="Areas\sales\Data\" />
-    <Folder Include="Areas\sales\Views\dashboard\" />
-    <Folder Include="Areas\sales\Views\Shared\" />
     <Folder Include="Areas\technical\Data\" />
     <Folder Include="Areas\technical\Views\expert\" />
     <Folder Include="Areas\technical\Views\manager\" />
     <Folder Include="Areas\technical\Views\Shared\" />
     <Folder Include="Areas\technical\Views\teamlead\" />
+    <Folder Include="Areas\userdata\Data\" />
+    <Folder Include="Content\MarketingResumes\" />
+    <Folder Include="Content\OriginalResumes\" />
     <Folder Include="Content\plugins\filterizr\config\" />
     <Folder Include="Content\plugins\filterizr\FilterContainer\" />
     <Folder Include="Content\plugins\filterizr\FilterItems\" />

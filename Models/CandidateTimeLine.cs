@@ -20,7 +20,7 @@ namespace DTRS.Models
         public System.DateTime Date { get; set; }
         public int ChangedBy { get; set; }
     
-        public virtual CandidateMaster CandidateMaster { get; set; }
         public virtual UserAccountDetail UserAccountDetail { get; set; }
+        public virtual CandidateMaster CandidateMaster { get; set; }
     }
 }

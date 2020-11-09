@@ -1,0 +1,117 @@
+﻿@model IEnumerable<DTRS.Models.CandidateMaster>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarketingStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisaStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecurringType.RecurringTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesServiceMaster.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TechnologyMaster.TechTitle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaidAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarketingStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VisaStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecurringType.RecurringTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesServiceMaster.ServiceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
+        </td>
+        <td>
+            @Html.ActionLink("Recurring", "Index","RecurringManage", new { id=item.CandidateId },null) |
+            @Html.ActionLink("Details", "Details", new { id=item.CandidateId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CandidateId })
+        </td>
+    </tr>
+}
+
+</table>

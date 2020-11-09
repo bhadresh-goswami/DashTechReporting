@@ -17,8 +17,11 @@ namespace DTRS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserAccountDetail()
         {
-            this.CandidateMasters = new HashSet<CandidateMaster>();
             this.CandidateTimeLines = new HashSet<CandidateTimeLine>();
+            this.CandidateMasters = new HashSet<CandidateMaster>();
+            this.TeamDetails = new HashSet<TeamDetail>();
+            this.TeamDetails1 = new HashSet<TeamDetail>();
+            this.TeamDetails2 = new HashSet<TeamDetail>();
         }
     
         public int UserId { get; set; }
@@ -34,10 +37,16 @@ namespace DTRS.Models
         public string CompanyName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CandidateMaster> CandidateMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CandidateTimeLine> CandidateTimeLines { get; set; }
         public virtual LocationMaster LocationMaster { get; set; }
         public virtual RoleMaster RoleMaster { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateMaster> CandidateMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamDetail> TeamDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamDetail> TeamDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamDetail> TeamDetails2 { get; set; }
     }
 }

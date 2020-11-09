@@ -25,7 +25,6 @@ namespace DTRS.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CandidateMaster> CandidateMasters { get; set; }
         public virtual DbSet<CandidateTimeLine> CandidateTimeLines { get; set; }
         public virtual DbSet<CommentDetail> CommentDetails { get; set; }
         public virtual DbSet<JobPortalMaster> JobPortalMasters { get; set; }
@@ -38,5 +37,8 @@ namespace DTRS.Models
         public virtual DbSet<TechnologyMaster> TechnologyMasters { get; set; }
         public virtual DbSet<UserAccountDetail> UserAccountDetails { get; set; }
         public virtual DbSet<VisaTitleMaster> VisaTitleMasters { get; set; }
+        public virtual DbSet<CandidateMaster> CandidateMasters { get; set; }
+        public virtual DbSet<TeamDetail> TeamDetails { get; set; }
+        public virtual DbSet<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
     }
 }

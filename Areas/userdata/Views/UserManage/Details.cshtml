@@ -1,0 +1,98 @@
+﻿@model DTRS.Models.UserAccountDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserAccountDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RocketName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RocketName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationMaster.LocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationMaster.LocationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleMaster.RoleTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleMaster.RoleTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

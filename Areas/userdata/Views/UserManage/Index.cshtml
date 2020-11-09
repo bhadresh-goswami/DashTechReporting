@@ -1,0 +1,162 @@
+﻿@model IEnumerable<DTRS.Models.UserAccountDetail>
+
+@{
+    ViewBag.Title = "User Manage";
+}
+
+@Html.Partial("_changePassword")
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Users</h3>
+        <div class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                    <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add New</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RocketName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserImageUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastLogin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationMaster.LocationName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoleMaster.RoleTitle)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span class="fas fa-plus-circle"></span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RocketName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserImageUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastLogin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocationMaster.LocationName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleMaster.RoleTitle)
+                        </td>
+                        <td>
+                            @*<button class="btn btn-primary" onclick="Show(@item.UserId)">Edit</button>*@
+                            @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) @*
+        @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.UserId })*@
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RocketName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserImageUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastLogin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationMaster.LocationName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoleMaster.RoleTitle)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </tfoot>
+
+
+        </table>
+        <script>
+            var _id = 0;
+            function Show(id) {
+                //alert(id);
+                _id = id;
+                _type = 'admin';
+                $("#modal-change-password").modal('show');
+                $("#id").val(_id);
+            }
+        </script>
+    </div>
+    <!-- /.card-body -->
+</div>
+
