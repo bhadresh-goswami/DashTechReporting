@@ -1,0 +1,452 @@
+﻿@model IEnumerable<DTRS.Models.CandidateMaster>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Job Portals</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <div class="card card-primary card-outline card-outline-tabs">
+            <div class="card-header p-0 border-bottom-0">
+                <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Sales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Marketing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill" href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Placed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Other</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="toast-container">
+                    <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+
+
+                        <table id="salesTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        Marketing
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CandidateName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EmailId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MobileNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TotalAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PaidAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PaymentStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CandidateStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Remarks)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MarketingStartDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.VisaStatus)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SalesServiceMaster.ServiceName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TechnologyMaster.TechTitle)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Where(a => a.CandidateStatus == "Sales"))
+                                {
+                                    <tr>
+                                        <th>
+                                            <button class="btn btn-default"><i class="fas fa-arrow-alt-circle-right"></i></button>
+                                        </th>
+                                        <th>
+                                            <a href="@Url.Action("StartMarketing","dashboard",new { @area = "marketing", @id = item.CandidateId})" class="btn btn-dark">Start</a>
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CandidateName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmailId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MobileNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PaidAmount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CandidateStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Remarks)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MarketingStartDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.VisaStatus)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SalesServiceMaster.ServiceName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                        <table id="marketingTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>
+
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CandidateName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EmailId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MobileNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TotalAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PaidAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PaymentStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CandidateStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Remarks)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MarketingStartDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.VisaStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RecurringType.RecurringTitle)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SalesServiceMaster.ServiceName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TechnologyMaster.TechTitle)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Where(a => a.CandidateStatus == "In Marketing"))
+                                {
+                                    <tr>
+
+                                        <th>
+                                            <button class="btn btn-default"><i class="fas fa-arrow-alt-circle-right"></i></button>
+                                        </th>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CandidateName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmailId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MobileNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PaidAmount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CandidateStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Remarks)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MarketingStartDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.VisaStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecurringType.RecurringTitle)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SalesServiceMaster.ServiceName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
+
+                        <table id="trainingTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CandidateName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EmailId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MobileNumber)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TotalAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PaidAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PaymentStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CandidateStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Remarks)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MarketingStartDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.VisaStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.RecurringType.RecurringTitle)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SalesServiceMaster.ServiceName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TechnologyMaster.TechTitle)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Where(a => a.CandidateStatus == "Training"))
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CandidateName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmailId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MobileNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PaidAmount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CandidateStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Remarks)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MarketingStartDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.VisaStatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RecurringType.RecurringTitle)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SalesServiceMaster.ServiceName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <div class="tab-pane fade" id="custom-tabs-four-settings" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
+                        Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+
+
+
+    </div>
+</div>
+<script>
+    //marketingTable
+    //salesTable
+    //trainingTable
+
+    $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
+        $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+    });
+    $("#marketingTable").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+
+    $("#salesTable").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    $("#trainingTable").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+</script>

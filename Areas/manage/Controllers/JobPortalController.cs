@@ -96,19 +96,7 @@ namespace DTRS.Areas.manage.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobPortalMaster jobPortalMaster = db.JobPortalMasters.Find(id);
-            if (jobPortalMaster == null)
-            {
-                return HttpNotFound();
-            }
-            return View(jobPortalMaster);
-        }
 
-        // POST: manage/JobPortal/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
             JobPortalMaster jobPortalMaster = db.JobPortalMasters.Find(id);
             db.JobPortalMasters.Remove(jobPortalMaster);
             db.SaveChanges();

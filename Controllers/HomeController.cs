@@ -28,6 +28,18 @@ namespace DTRS.Controllers
            
             return Redirect(m.defaultUrl);
         }
+        public ActionResult recruiter()
+        {
+            sessionModel m = new sessionModel();
+            m.UserId = 5;
+            m.UserRocketName = "ronak.g";
+            m.UserRole = "Recruiter";
+            m.defaultUrl = Url.Action("index", "recruiter", new { @area = "marketing" });
+            Session["User"] = m;
+            Session.Timeout = 50;
+
+            return Redirect(m.defaultUrl);
+        }
     }
 
 }

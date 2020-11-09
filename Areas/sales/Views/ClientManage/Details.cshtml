@@ -1,0 +1,138 @@
+﻿@model DTRS.Models.CandidateMaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CandidateMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotlaAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotlaAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarketingStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarketingStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisaStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisaStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecurringType.RecurringTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecurringType.RecurringTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAccountDetail.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesServiceMaster.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesServiceMaster.ServiceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnologyMaster.TechTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnologyMaster.TechTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CandidateId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

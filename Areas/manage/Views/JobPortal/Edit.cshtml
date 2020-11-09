@@ -4,8 +4,41 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<form action="@Url.Action("Edit")" method="post">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.PortalId)
 
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">@ViewBag.Title</h3>
+
+            @*<div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>*@
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Enter Portal Name</label>
+                        <input type="text" value="@Model.PortalTitle" class="form-control" name="PortalTitle" id="PortalTitle" required />
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <a href="@Url.Action("Index")" class="btn btn-info">Back</a>
+            <a href="@Url.Action("Delete")/@Model.PortalId" onclick="return confirm('Delete?')" class="btn btn-danger">Delete</a>
+            <button type="submit" class="btn btn-dark">Update</button>
+        </div>
+    </div>
+</form>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

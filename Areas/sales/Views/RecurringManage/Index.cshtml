@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DTRS.Models.RecurringMaster>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateMaster.CandidateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SendReminderEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedIn)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CandidateMaster.CandidateName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SendReminderEmail)
+            </td>
+            <td colspan="3">
+                <form action="@Url.Action("Edit","RecurringManage",new { @area = "sales"})" method="post">
+                    <input type="hidden" value="@item.RecurringId" name="id" />
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                                <input type="date" name="paid" class="form-control" required />
+                                
+                            </td>
+                            <td>
+                                <select class="form-control" name="recIn" required>
+                                    <option value="">Select...</option>
+                                    <option value="Stripe">Stripe</option>
+                                    <option value="PayPal">PayPal</option>
+                                </select>
+                                
+                            </td>
+
+                            <td>
+                                <select class="form-control" name="pstatus" required>
+                                    <option value="">Select...</option>
+                                    <option value="Paid">Paid</option>
+                                    <option value="Rejected">Rejected</option>
+                                    <option value="Rejected">Give Discount</option>
+                                </select>
+
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" type="submit">Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RecurringId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RecurringId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RecurringId })
+            </td>
+        </tr>
+    }
+
+</table>
