@@ -5,22 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f144f058e4d741b8869049d030967bbc" Name="Diagram1">
-        <EntityTypeShape EntityType="dashReportingModel.CandidateTimeLine" Width="1.5" PointX="10.5" PointY="4.875" />
-        <EntityTypeShape EntityType="dashReportingModel.CommentDetail" Width="1.5" PointX="7.5" PointY="3.125" />
+        <EntityTypeShape EntityType="dashReportingModel.CandidateTimeLine" Width="1.5" PointX="11.875" PointY="6.875" />
+        <EntityTypeShape EntityType="dashReportingModel.CommentDetail" Width="1.5" PointX="12.375" PointY="4.125" />
         <EntityTypeShape EntityType="dashReportingModel.JobPortalMaster" Width="1.5" PointX="7.75" PointY="7.125" />
-        <EntityTypeShape EntityType="dashReportingModel.LocationMaster" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="dashReportingModel.LocationMaster" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="dashReportingModel.RecurringMaster" Width="1.5" PointX="7.5" PointY="9.375" />
-        <EntityTypeShape EntityType="dashReportingModel.RecurringType" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="dashReportingModel.RoleMaster" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="dashReportingModel.RecurringType" Width="1.5" PointX="2.75" PointY="0.5" />
+        <EntityTypeShape EntityType="dashReportingModel.RoleMaster" Width="1.5" PointX="0.5" PointY="5.25" />
         <EntityTypeShape EntityType="dashReportingModel.SalesServiceMaster" Width="1.5" PointX="3" PointY="11.875" />
         <EntityTypeShape EntityType="dashReportingModel.sysdiagram" Width="1.5" PointX="9.75" PointY="1.125" />
         <EntityTypeShape EntityType="dashReportingModel.TechnologyMaster" Width="1.5" PointX="3" PointY="9.5" />
-        <EntityTypeShape EntityType="dashReportingModel.UserAccountDetail" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="dashReportingModel.UserAccountDetail" Width="1.5" PointX="3" PointY="4.75" />
         <EntityTypeShape EntityType="dashReportingModel.VisaTitleMaster" Width="1.5" PointX="9.75" PointY="8.125" />
         <AssociationConnector Association="dashReportingModel.FK__Candidate__Chang__36B12243" />
         <AssociationConnector Association="dashReportingModel.FK__UserAccou__RefLo__1A14E395" />
         <AssociationConnector Association="dashReportingModel.FK__UserAccou__RefRo__1B0907CE" />
-        <EntityTypeShape EntityType="dashReportingModel.CandidateMaster" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="dashReportingModel.CandidateMaster" Width="1.5" PointX="5.75" PointY="4.25" />
         <AssociationConnector Association="dashReportingModel.FK__Candidate__RefCa__35BCFE0A" />
         <AssociationConnector Association="dashReportingModel.FK__Candidate__RefRe__2C3393D0" />
         <AssociationConnector Association="dashReportingModel.FK__Candidate__RefSa__2B3F6F97" />
@@ -28,12 +28,15 @@
         <AssociationConnector Association="dashReportingModel.FK__Candidate__Techn__4222D4EF" />
         <AssociationConnector Association="dashReportingModel.FK__CommentDe__RefCa__32E0915F" />
         <AssociationConnector Association="dashReportingModel.FK__Recurring__RefCa__300424B4" />
-        <EntityTypeShape EntityType="dashReportingModel.TeamDetail" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="dashReportingModel.TeamDetail" Width="1.5" PointX="5.25" PointY="0.5" />
         <AssociationConnector Association="dashReportingModel.FK__TeamDetai__Membe__49C3F6B7" />
         <AssociationConnector Association="dashReportingModel.FK__TeamDetai__TeamL__4AB81AF0" />
         <AssociationConnector Association="dashReportingModel.FK__TeamDetai__TeamM__4BAC3F29" />
-        <EntityTypeShape EntityType="dashReportingModel.CandidateMarketingDetail" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="dashReportingModel.CandidateMarketingDetail" Width="1.5" PointX="8" PointY="0.5" />
         <AssociationConnector Association="dashReportingModel.FK__Candidate__RefCa__4E88ABD4" />
+        <EntityTypeShape EntityType="dashReportingModel.CandidateAssign" Width="1.5" PointX="11.625" PointY="1.25" />
+        <AssociationConnector Association="dashReportingModel.FK__Candidate__refMa__5DCAEF64" />
+        <AssociationConnector Association="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

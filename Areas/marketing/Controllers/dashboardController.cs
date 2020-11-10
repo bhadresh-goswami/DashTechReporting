@@ -97,6 +97,7 @@ namespace DTRS.Areas.marketing.Controllers
             return RedirectToAction("Index");
         }
 
+
         public ActionResult EditMarketing(int? id)
         {
 
@@ -169,5 +170,6 @@ namespace DTRS.Areas.marketing.Controllers
 
             return View();
         }
+
     }
 }

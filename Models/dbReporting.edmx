@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="dashReportingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CandidateAssign">
+          <Key>
+            <PropertyRef Name="AssignedId" />
+          </Key>
+          <Property Name="AssignedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefTeamId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="refMarketingId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="CandidateMarketingDetails">
           <Key>
             <PropertyRef Name="MarketingId" />
@@ -199,6 +209,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Candidate__refMa__5DCAEF64">
+          <End Role="CandidateMarketingDetails" Type="Self.CandidateMarketingDetails" Multiplicity="1" />
+          <End Role="CandidateAssign" Type="Self.CandidateAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateMarketingDetails">
+              <PropertyRef Name="MarketingId" />
+            </Principal>
+            <Dependent Role="CandidateAssign">
+              <PropertyRef Name="refMarketingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Candidate__RefRe__2C3393D0">
           <End Role="RecurringType" Type="Self.RecurringType" Multiplicity="1" />
           <End Role="CandidateMaster" Type="Self.CandidateMaster" Multiplicity="*" />
@@ -232,6 +254,18 @@
             </Principal>
             <Dependent Role="CandidateMaster">
               <PropertyRef Name="RefServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__RefTe__5CD6CB2B">
+          <End Role="TeamDetails" Type="Self.TeamDetails" Multiplicity="1" />
+          <End Role="CandidateAssign" Type="Self.CandidateAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamDetails">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="CandidateAssign">
+              <PropertyRef Name="RefTeamId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -332,6 +366,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="dashReportingModelStoreContainer">
+          <EntitySet Name="CandidateAssign" EntityType="Self.CandidateAssign" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CandidateMarketingDetails" EntityType="Self.CandidateMarketingDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CandidateMaster" EntityType="Self.CandidateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CandidateTimeLine" EntityType="Self.CandidateTimeLine" Schema="dbo" store:Type="Tables" />
@@ -359,6 +394,10 @@
             <End Role="CandidateMaster" EntitySet="CandidateMaster" />
             <End Role="CandidateMarketingDetails" EntitySet="CandidateMarketingDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK__Candidate__refMa__5DCAEF64" Association="Self.FK__Candidate__refMa__5DCAEF64">
+            <End Role="CandidateMarketingDetails" EntitySet="CandidateMarketingDetails" />
+            <End Role="CandidateAssign" EntitySet="CandidateAssign" />
+          </AssociationSet>
           <AssociationSet Name="FK__Candidate__RefRe__2C3393D0" Association="Self.FK__Candidate__RefRe__2C3393D0">
             <End Role="RecurringType" EntitySet="RecurringType" />
             <End Role="CandidateMaster" EntitySet="CandidateMaster" />
@@ -370,6 +409,10 @@
           <AssociationSet Name="FK__Candidate__RefSe__2D27B809" Association="Self.FK__Candidate__RefSe__2D27B809">
             <End Role="SalesServiceMaster" EntitySet="SalesServiceMaster" />
             <End Role="CandidateMaster" EntitySet="CandidateMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__RefTe__5CD6CB2B" Association="Self.FK__Candidate__RefTe__5CD6CB2B">
+            <End Role="TeamDetails" EntitySet="TeamDetails" />
+            <End Role="CandidateAssign" EntitySet="CandidateAssign" />
           </AssociationSet>
           <AssociationSet Name="FK__Candidate__Techn__4222D4EF" Association="Self.FK__Candidate__Techn__4222D4EF">
             <End Role="TechnologyMaster" EntitySet="TechnologyMaster" />
@@ -479,6 +522,15 @@
           <AssociationSet Name="FK__Candidate__RefCa__4E88ABD4" Association="dashReportingModel.FK__Candidate__RefCa__4E88ABD4">
             <End Role="CandidateMaster" EntitySet="CandidateMasters" />
             <End Role="CandidateMarketingDetail" EntitySet="CandidateMarketingDetails" />
+          </AssociationSet>
+          <EntitySet Name="CandidateAssigns" EntityType="dashReportingModel.CandidateAssign" />
+          <AssociationSet Name="FK__Candidate__refMa__5DCAEF64" Association="dashReportingModel.FK__Candidate__refMa__5DCAEF64">
+            <End Role="CandidateMarketingDetail" EntitySet="CandidateMarketingDetails" />
+            <End Role="CandidateAssign" EntitySet="CandidateAssigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__RefTe__5CD6CB2B" Association="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B">
+            <End Role="TeamDetail" EntitySet="TeamDetails" />
+            <End Role="CandidateAssign" EntitySet="CandidateAssigns" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CandidateTimeLine">
@@ -769,6 +821,7 @@
           <NavigationProperty Name="UserAccountDetail" Relationship="dashReportingModel.FK__TeamDetai__Membe__49C3F6B7" FromRole="TeamDetail" ToRole="UserAccountDetail" />
           <NavigationProperty Name="UserAccountDetail1" Relationship="dashReportingModel.FK__TeamDetai__TeamL__4AB81AF0" FromRole="TeamDetail" ToRole="UserAccountDetail" />
           <NavigationProperty Name="UserAccountDetail2" Relationship="dashReportingModel.FK__TeamDetai__TeamM__4BAC3F29" FromRole="TeamDetail" ToRole="UserAccountDetail" />
+          <NavigationProperty Name="CandidateAssigns" Relationship="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B" FromRole="TeamDetail" ToRole="CandidateAssign" />
         </EntityType>
         <Association Name="FK__TeamDetai__Membe__49C3F6B7">
           <End Type="dashReportingModel.UserAccountDetail" Role="UserAccountDetail" Multiplicity="1" />
@@ -822,6 +875,7 @@
           <Property Name="LocationConcern" Type="Boolean" Nullable="false" />
           <Property Name="RequiredLocationList" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CandidateMaster" Relationship="dashReportingModel.FK__Candidate__RefCa__4E88ABD4" FromRole="CandidateMarketingDetail" ToRole="CandidateMaster" />
+          <NavigationProperty Name="CandidateAssigns" Relationship="dashReportingModel.FK__Candidate__refMa__5DCAEF64" FromRole="CandidateMarketingDetail" ToRole="CandidateAssign" />
         </EntityType>
         <Association Name="FK__Candidate__RefCa__4E88ABD4">
           <End Type="dashReportingModel.CandidateMaster" Role="CandidateMaster" Multiplicity="1" />
@@ -832,6 +886,42 @@
             </Principal>
             <Dependent Role="CandidateMarketingDetail">
               <PropertyRef Name="RefCandidateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CandidateAssign">
+          <Key>
+            <PropertyRef Name="AssignedId" />
+          </Key>
+          <Property Name="AssignedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefTeamId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="refMarketingId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CandidateMarketingDetail" Relationship="dashReportingModel.FK__Candidate__refMa__5DCAEF64" FromRole="CandidateAssign" ToRole="CandidateMarketingDetail" />
+          <NavigationProperty Name="TeamDetail" Relationship="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B" FromRole="CandidateAssign" ToRole="TeamDetail" />
+        </EntityType>
+        <Association Name="FK__Candidate__refMa__5DCAEF64">
+          <End Type="dashReportingModel.CandidateMarketingDetail" Role="CandidateMarketingDetail" Multiplicity="1" />
+          <End Type="dashReportingModel.CandidateAssign" Role="CandidateAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateMarketingDetail">
+              <PropertyRef Name="MarketingId" />
+            </Principal>
+            <Dependent Role="CandidateAssign">
+              <PropertyRef Name="refMarketingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__RefTe__5CD6CB2B">
+          <End Type="dashReportingModel.TeamDetail" Role="TeamDetail" Multiplicity="1" />
+          <End Type="dashReportingModel.CandidateAssign" Role="CandidateAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamDetail">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="CandidateAssign">
+              <PropertyRef Name="RefTeamId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1011,6 +1101,17 @@
                 <ScalarProperty Name="MarketingEmailId" ColumnName="MarketingEmailId" />
                 <ScalarProperty Name="RefCandidateId" ColumnName="RefCandidateId" />
                 <ScalarProperty Name="MarketingId" ColumnName="MarketingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateAssigns">
+            <EntityTypeMapping TypeName="dashReportingModel.CandidateAssign">
+              <MappingFragment StoreEntitySet="CandidateAssign">
+                <ScalarProperty Name="refMarketingId" ColumnName="refMarketingId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="RefTeamId" ColumnName="RefTeamId" />
+                <ScalarProperty Name="AssignedId" ColumnName="AssignedId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
