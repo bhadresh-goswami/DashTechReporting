@@ -92,11 +92,84 @@ namespace DTRS.Areas.marketing.Controllers
             }
             catch (Exception ex)
             {
-                TempData["Error"] = ex.Message + " \n"+ex.InnerException;
+                TempData["Error"] = ex.Message + " \n" + ex.InnerException;
             }
             return RedirectToAction("Index");
         }
 
-        
+
+        public ActionResult EditMarketing(int? id)
+        {
+
+            try
+            {
+                if (id == null)
+                {
+                    return RedirectToAction("index");
+                }
+                var data = db.CandidateMarketingDetails.SingleOrDefault(asd => asd.RefCandidateId == id.Value);
+                if (data != null)
+                {
+
+                    return View(data);
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditMarketing(CandidateMarketingDetail candidate)
+        {
+
+            try
+            {
+                if (candidate == null)
+                {
+                    return RedirectToAction("index");
+                }
+
+                CandidateMarketingDetail newCandidate = db.CandidateMarketingDetails.SingleOrDefault(asd => asd.RefCandidateId == candidate.RefCandidateId);
+                if (newCandidate != null)
+                {
+                    newCandidate.MarketingEmailId = candidate.MarketingEmailId;
+                    newCandidate.MarketingContactNumber = candidate.MarketingContactNumber;
+                    newCandidate.OriginalResume = candidate.OriginalResume;
+                    newCandidate.MarketingResume = candidate.MarketingResume;
+                    newCandidate.OtherRemarks = candidate.OtherRemarks;
+                    newCandidate.LocationConcern = candidate.LocationConcern;
+                    newCandidate.RequiredLocationList = candidate.RequiredLocationList;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+
+            }
+            return View();
+        }
+
+        public ActionResult CandidateDetails(int? Id)
+        {
+
+
+            return View();
+        }
+
     }
 }
