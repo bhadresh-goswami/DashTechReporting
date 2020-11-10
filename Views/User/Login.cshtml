@@ -34,7 +34,7 @@
 
                 <form action="@Url.Action("Login","User",new { @area = ""})" method="post">
                     <div class="input-group mb-3">
-                        <input type="email" name="emailid" class="form-control" placeholder="Email" required>
+                        <input type="email" name="emailid" class="form-control" placeholder="Email" autocomplete="off" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="off" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -63,6 +63,9 @@
                             <button type="submit" class="btn btn-primary btn-block">Log In!</button>
                         </div>
                         <!-- /.col -->
+                    </div>
+                    <div class="row justify-content-lg-center">
+                        <span style="color:red; margin:10px 0">@ViewBag.Msg</span>
                     </div>
                 </form>
 

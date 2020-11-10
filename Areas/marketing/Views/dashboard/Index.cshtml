@@ -217,7 +217,7 @@
                                     <tr>
 
                                         <th>
-                                            <button class="btn btn-default"><i class="fas fa-arrow-alt-circle-right"></i></button>
+                                            <a href="dashboard/CandidateDetails/@item.CandidateId" class="btn btn-default"><i class="fas fa-info-circle"></i></a>
                                         </th>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CandidateName)
@@ -265,9 +265,7 @@
                                             @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+                                            @Html.ActionLink("Edit", "EditMarketing", new { id = item.CandidateId })
                                         </td>
                                     </tr>
                                 }
