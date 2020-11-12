@@ -80,6 +80,24 @@
           <Property Name="PortalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PortalTitle" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="LeadMaster">
+          <Key>
+            <PropertyRef Name="Lid" />
+          </Key>
+          <Property Name="Lid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeadDate" Type="date" Nullable="false" />
+          <Property Name="LeadBy" Type="int" Nullable="false" />
+          <Property Name="LeadType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LinkedInURL" Type="varchar(max)" Nullable="false" />
+          <Property Name="CandidateName" Type="varchar(max)" Nullable="false" />
+          <Property Name="CandidateNumber" Type="varchar(max)" Nullable="false" />
+          <Property Name="LinkedInEmailid" Type="varchar(max)" Nullable="false" />
+          <Property Name="CandidateLocation" Type="varchar(max)" Nullable="false" />
+          <Property Name="TechnologyName" Type="varchar(max)" />
+          <Property Name="AssignedToSalesAssociate" Type="varchar(max)" />
+          <Property Name="Remarks" Type="varchar(max)" />
+          <Property Name="Feedback" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="LocationMaster">
           <Key>
             <PropertyRef Name="LocationId" />
@@ -322,6 +340,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__LeadMaste__LeadB__6E01572D">
+          <End Role="UserAccountDetails" Type="Self.UserAccountDetails" Multiplicity="1" />
+          <End Role="LeadMaster" Type="Self.LeadMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccountDetails">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LeadMaster">
+              <PropertyRef Name="LeadBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recurring__RefCa__300424B4">
         <Association Name="FK__Recurring__RefCa__5441852A">
           <End Role="CandidateMaster" Type="Self.CandidateMaster" Multiplicity="1" />
           <End Role="RecurringMaster" Type="Self.RecurringMaster" Multiplicity="*" />
@@ -413,6 +444,7 @@
           <EntitySet Name="CandidateTimeLine" EntityType="Self.CandidateTimeLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentDetails" EntityType="Self.CommentDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobPortalMaster" EntityType="Self.JobPortalMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeadMaster" EntityType="Self.LeadMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LocationMaster" EntityType="Self.LocationMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecurringMaster" EntityType="Self.RecurringMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecurringType" EntityType="Self.RecurringType" Schema="dbo" store:Type="Tables" />
@@ -465,6 +497,11 @@
             <End Role="CandidateMaster" EntitySet="CandidateMaster" />
             <End Role="CommentDetails" EntitySet="CommentDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK__LeadMaste__LeadB__6E01572D" Association="Self.FK__LeadMaste__LeadB__6E01572D">
+            <End Role="UserAccountDetails" EntitySet="UserAccountDetails" />
+            <End Role="LeadMaster" EntitySet="LeadMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recurring__RefCa__300424B4" Association="Self.FK__Recurring__RefCa__300424B4">
           <AssociationSet Name="FK__Recurring__RefCa__5441852A" Association="Self.FK__Recurring__RefCa__5441852A">
             <End Role="CandidateMaster" EntitySet="CandidateMaster" />
             <End Role="RecurringMaster" EntitySet="RecurringMaster" />
@@ -583,6 +620,11 @@
           <AssociationSet Name="FK__Submissio__RefAs__6B24EA82" Association="dashReportingModel.FK__Submissio__RefAs__6B24EA82">
             <End Role="CandidateAssign" EntitySet="CandidateAssigns" />
             <End Role="SubmissionDetail" EntitySet="SubmissionDetails" />
+          </AssociationSet>
+          <EntitySet Name="LeadMasters" EntityType="dashReportingModel.LeadMaster" />
+          <AssociationSet Name="FK__LeadMaste__LeadB__6E01572D" Association="dashReportingModel.FK__LeadMaste__LeadB__6E01572D">
+            <End Role="UserAccountDetail" EntitySet="UserAccountDetails" />
+            <End Role="LeadMaster" EntitySet="LeadMasters" />
           </AssociationSet>
           <EntitySet Name="TaskTitleMasters" EntityType="dashReportingModel.TaskTitleMaster" />
         </EntityContainer>
@@ -705,6 +747,7 @@
           <NavigationProperty Name="TeamDetails" Relationship="dashReportingModel.FK__TeamDetai__Membe__49C3F6B7" FromRole="UserAccountDetail" ToRole="TeamDetail" />
           <NavigationProperty Name="TeamDetails1" Relationship="dashReportingModel.FK__TeamDetai__TeamL__4AB81AF0" FromRole="UserAccountDetail" ToRole="TeamDetail" />
           <NavigationProperty Name="TeamDetails2" Relationship="dashReportingModel.FK__TeamDetai__TeamM__4BAC3F29" FromRole="UserAccountDetail" ToRole="TeamDetail" />
+          <NavigationProperty Name="LeadMasters" Relationship="dashReportingModel.FK__LeadMaste__LeadB__6E01572D" FromRole="UserAccountDetail" ToRole="LeadMaster" />
         </EntityType>
         <EntityType Name="VisaTitleMaster">
           <Key>
@@ -1011,6 +1054,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="LeadMaster">
+          <Key>
+            <PropertyRef Name="Lid" />
+          </Key>
+          <Property Name="Lid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeadDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LeadBy" Type="Int32" Nullable="false" />
+          <Property Name="LeadType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LinkedInURL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CandidateName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CandidateNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LinkedInEmailid" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CandidateLocation" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TechnologyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedToSalesAssociate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccountDetail" Relationship="dashReportingModel.FK__LeadMaste__LeadB__6E01572D" FromRole="LeadMaster" ToRole="UserAccountDetail" />
+        </EntityType>
+        <Association Name="FK__LeadMaste__LeadB__6E01572D">
+          <End Type="dashReportingModel.UserAccountDetail" Role="UserAccountDetail" Multiplicity="1" />
+          <End Type="dashReportingModel.LeadMaster" Role="LeadMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccountDetail">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LeadMaster">
+              <PropertyRef Name="LeadBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="TaskTitleMaster">
           <Key>
             <PropertyRef Name="TaskTitleID" />
@@ -1231,6 +1305,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LeadMasters">
+            <EntityTypeMapping TypeName="dashReportingModel.LeadMaster">
+              <MappingFragment StoreEntitySet="LeadMaster">
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="AssignedToSalesAssociate" ColumnName="AssignedToSalesAssociate" />
+                <ScalarProperty Name="TechnologyName" ColumnName="TechnologyName" />
+                <ScalarProperty Name="CandidateLocation" ColumnName="CandidateLocation" />
+                <ScalarProperty Name="LinkedInEmailid" ColumnName="LinkedInEmailid" />
+                <ScalarProperty Name="CandidateNumber" ColumnName="CandidateNumber" />
+                <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+                <ScalarProperty Name="LinkedInURL" ColumnName="LinkedInURL" />
+                <ScalarProperty Name="LeadType" ColumnName="LeadType" />
+                <ScalarProperty Name="LeadBy" ColumnName="LeadBy" />
+                <ScalarProperty Name="LeadDate" ColumnName="LeadDate" />
+                <ScalarProperty Name="Lid" ColumnName="Lid" />
           <EntitySetMapping Name="TaskTitleMasters">
             <EntityTypeMapping TypeName="dashReportingModel.TaskTitleMaster">
               <MappingFragment StoreEntitySet="TaskTitleMaster">

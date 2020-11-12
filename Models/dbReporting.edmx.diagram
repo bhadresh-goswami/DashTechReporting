@@ -39,6 +39,8 @@
         <AssociationConnector Association="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B" />
         <EntityTypeShape EntityType="dashReportingModel.SubmissionDetail" Width="1.5" PointX="13.875" PointY="10.125" />
         <AssociationConnector Association="dashReportingModel.FK__Submissio__RefAs__6B24EA82" />
+        <EntityTypeShape EntityType="dashReportingModel.LeadMaster" Width="1.5" PointX="5.25" PointY="11.25" />
+        <AssociationConnector Association="dashReportingModel.FK__LeadMaste__LeadB__6E01572D" />
         <EntityTypeShape EntityType="dashReportingModel.TaskTitleMaster" Width="1.5" PointX="10.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>

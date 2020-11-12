@@ -1,0 +1,121 @@
+﻿@model DTRS.Models.LeadMaster
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LeadMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LeadDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeadDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeadType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeadType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkedInURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkedInURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkedInEmailid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkedInEmailid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnologyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnologyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedToSalesAssociate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedToSalesAssociate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Feedback)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Feedback)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAccountDetail.FullName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
