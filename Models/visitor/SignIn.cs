@@ -70,6 +70,20 @@ namespace DTRS.Models.visitor
             {
                 return "../sales/dashboard";
             }
+
+            else if (URL == "Technical Team Manager")
+            {
+                return "../technical/manager";
+            }
+            else if (URL == "Technical Team Lead")
+            {
+                return "../technical/teamlead";
+            }
+            else if (URL == "Technical Expert")
+            {
+                return "../technical/expert";
+            }
+
             else
             {
                 return "";

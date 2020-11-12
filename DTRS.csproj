@@ -186,7 +186,9 @@
     <Compile Include="Areas\sales\salesAreaRegistration.cs" />
     <Compile Include="Areas\technical\Controllers\expertController.cs" />
     <Compile Include="Areas\technical\Controllers\managerController.cs" />
+    <Compile Include="Areas\technical\Controllers\TaskTitleMastersController.cs" />
     <Compile Include="Areas\technical\Controllers\teamleadController.cs" />
+    <Compile Include="Areas\technical\Controllers\UserAccountDetailsController.cs" />
     <Compile Include="Areas\technical\technicalAreaRegistration.cs" />
     <Compile Include="Areas\userdata\Controllers\TeamDetailsController.cs" />
     <Compile Include="Areas\userdata\Controllers\UserManageController.cs" />
@@ -251,6 +253,9 @@
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>dbReporting.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskTitleMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TeamDetail.cs">
@@ -2168,6 +2173,17 @@
     <Content Include="Areas\marketing\Views\SubmissionDetails\Details.cshtml" />
     <Content Include="Areas\marketing\Views\SubmissionDetails\Edit.cshtml" />
     <Content Include="Areas\marketing\Views\SubmissionDetails\Index.cshtml" />
+    <Content Include="Areas\technical\Views\manager\Index.cshtml" />
+    <Content Include="Areas\technical\Views\TaskTitleMasters\Create.cshtml" />
+    <Content Include="Areas\technical\Views\TaskTitleMasters\Delete.cshtml" />
+    <Content Include="Areas\technical\Views\TaskTitleMasters\Details.cshtml" />
+    <Content Include="Areas\technical\Views\TaskTitleMasters\Edit.cshtml" />
+    <Content Include="Areas\technical\Views\TaskTitleMasters\Index.cshtml" />
+    <Content Include="Areas\technical\Views\UserAccountDetails\Create.cshtml" />
+    <Content Include="Areas\technical\Views\UserAccountDetails\Delete.cshtml" />
+    <Content Include="Areas\technical\Views\UserAccountDetails\Details.cshtml" />
+    <Content Include="Areas\technical\Views\UserAccountDetails\Edit.cshtml" />
+    <Content Include="Areas\technical\Views\UserAccountDetails\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2201,6 +2217,7 @@
     <Content Include="Views\Shared\_menuRecruiter.cshtml" />
     <Content Include="Views\Shared\_menuMarketingTL.cshtml" />
     <Content Include="Views\Shared\_menuMarketing.cshtml" />
+    <Content Include="Views\Shared\_menuTechnicalManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2221,7 +2238,6 @@
     <Folder Include="Areas\sales\Data\" />
     <Folder Include="Areas\technical\Data\" />
     <Folder Include="Areas\technical\Views\expert\" />
-    <Folder Include="Areas\technical\Views\manager\" />
     <Folder Include="Areas\technical\Views\Shared\" />
     <Folder Include="Areas\technical\Views\teamlead\" />
     <Folder Include="Areas\userdata\Data\" />
