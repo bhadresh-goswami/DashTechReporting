@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DTRS.Models.TeamDetail>
+
+@{
+    ViewBag.Title = "Team List";
+    Layout = "~/views/Shared/_Layout.cshtml" ;
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Teams</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Member Name</th>
+                    <th>Team Lead</th>
+                    <th>Team Manager</th>
+                    <th>Department</th>
+
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAccountDetail1.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAccountDetail2.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("edit")/@item.TeamId" class="btn btn-warning"><i class="fas fa-edit"></i></a> |
+                        <a href="@Url.Action("delete")/@item.TeamId" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Member Name</th>
+                    <th>Team Lead</th>
+                    <th>Team Manager</th>
+                    <th>Department</th>
+
+                    <th></th>
+
+                </tr>
+            </tfoot>
+
+
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+

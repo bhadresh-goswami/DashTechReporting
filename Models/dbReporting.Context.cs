@@ -33,7 +33,6 @@ namespace DTRS.Models
         public virtual DbSet<RecurringType> RecurringTypes { get; set; }
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
         public virtual DbSet<SalesServiceMaster> SalesServiceMasters { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TechnologyMaster> TechnologyMasters { get; set; }
         public virtual DbSet<UserAccountDetail> UserAccountDetails { get; set; }
         public virtual DbSet<VisaTitleMaster> VisaTitleMasters { get; set; }
@@ -42,5 +41,6 @@ namespace DTRS.Models
         public virtual DbSet<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
         public virtual DbSet<CandidateAssign> CandidateAssigns { get; set; }
         public virtual DbSet<SubmissionDetail> SubmissionDetails { get; set; }
+        public virtual DbSet<DepartmentMaster> DepartmentMasters { get; set; }
     }
 }

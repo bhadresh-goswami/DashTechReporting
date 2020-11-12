@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="dashReportingModel.RecurringType" Width="1.5" PointX="2.75" PointY="0.5" />
         <EntityTypeShape EntityType="dashReportingModel.RoleMaster" Width="1.5" PointX="0.5" PointY="5.25" />
         <EntityTypeShape EntityType="dashReportingModel.SalesServiceMaster" Width="1.5" PointX="3" PointY="11.875" />
-        <EntityTypeShape EntityType="dashReportingModel.sysdiagram" Width="1.5" PointX="9.75" PointY="1.125" />
         <EntityTypeShape EntityType="dashReportingModel.TechnologyMaster" Width="1.5" PointX="3" PointY="9.5" />
         <EntityTypeShape EntityType="dashReportingModel.UserAccountDetail" Width="1.5" PointX="3" PointY="4.75" />
         <EntityTypeShape EntityType="dashReportingModel.VisaTitleMaster" Width="1.5" PointX="9.75" PointY="8.125" />
@@ -39,6 +38,7 @@
         <AssociationConnector Association="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B" />
         <EntityTypeShape EntityType="dashReportingModel.SubmissionDetail" Width="1.5" PointX="13.875" PointY="10.125" />
         <AssociationConnector Association="dashReportingModel.FK__Submissio__RefAs__6B24EA82" />
+        <EntityTypeShape EntityType="dashReportingModel.DepartmentMaster" Width="1.5" PointX="10.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

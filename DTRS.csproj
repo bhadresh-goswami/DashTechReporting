@@ -128,6 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
+    <Compile Include="App_Start\BundleConfig3.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Areas\sales\salesAreaRegistration.cs" />
     <Compile Include="Areas\technical\Controllers\expertController.cs" />
     <Compile Include="Areas\technical\Controllers\managerController.cs" />
+    <Compile Include="Areas\technical\Controllers\teamController.cs" />
     <Compile Include="Areas\technical\Controllers\teamleadController.cs" />
     <Compile Include="Areas\technical\technicalAreaRegistration.cs" />
     <Compile Include="Areas\userdata\Controllers\TeamDetailsController.cs" />
@@ -227,6 +230,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbReporting.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DepartmentMaster.cs">
+      <DependentUpon>dbReporting.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\goalModel.cs" />
     <Compile Include="Models\JobPortalMaster.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
@@ -248,9 +254,6 @@
     </Compile>
     <Compile Include="Models\sessionModel.cs" />
     <Compile Include="Models\SubmissionDetail.cs">
-      <DependentUpon>dbReporting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TeamDetail.cs">
@@ -1951,6 +1954,7 @@
     <Content Include="Content\plugins\toastr\toastr.css" />
     <Content Include="Content\plugins\toastr\toastr.min.css" />
     <Content Include="Content\plugins\toastr\toastr.min.js" />
+    <Content Include="DBScript\Department.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2168,11 +2172,21 @@
     <Content Include="Areas\marketing\Views\SubmissionDetails\Details.cshtml" />
     <Content Include="Areas\marketing\Views\SubmissionDetails\Edit.cshtml" />
     <Content Include="Areas\marketing\Views\SubmissionDetails\Index.cshtml" />
+    <Content Include="Areas\technical\Views\team\Create.cshtml" />
+    <Content Include="Areas\technical\Views\team\Delete.cshtml" />
+    <Content Include="Areas\technical\Views\team\Details.cshtml" />
+    <Content Include="Areas\technical\Views\team\Edit.cshtml" />
+    <Content Include="Areas\technical\Views\team\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -2238,6 +2252,7 @@
     <Folder Include="Content\plugins\filterizr\Spinner\" />
     <Folder Include="Content\plugins\filterizr\types\interfaces\" />
     <Folder Include="Content\plugins\filterizr\utils\" />
+    <Folder Include="Data\" />
     <Folder Include="Models\recurring\" />
   </ItemGroup>
   <ItemGroup>

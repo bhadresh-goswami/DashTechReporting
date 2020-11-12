@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[DepartmentMaster] (
+    [DepartmentId]   INT          IDENTITY (1, 1) NOT NULL,
+    [DepartmentName] VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([DepartmentId] ASC)
+);
