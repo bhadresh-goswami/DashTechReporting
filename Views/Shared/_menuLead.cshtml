@@ -1,0 +1,28 @@
+﻿@using DTRS.Models
+@{
+    var session = (sessionModel)Session["User"];
+
+}
+<li class="nav-item">
+    <a href="@session.defaultUrl" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Dashboard</p>
+    </a>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-database"></i>
+        <p>
+            Manage Data
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="@Url.Action("Index","LeadManage",new {@area = "leadgenerate"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Lead Data</p>
+            </a>
+        </li>
+    </ul>
+</li>

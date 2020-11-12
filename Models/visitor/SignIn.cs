@@ -70,6 +70,10 @@ namespace DTRS.Models.visitor
             {
                 return "../sales/dashboard";
             }
+            else if (URL == "Lead Generator")
+            {
+                return "../leadgenerate/dashboard";
+            }
             else
             {
                 return "";
