@@ -176,6 +176,7 @@
     <Compile Include="Areas\manage\manageAreaRegistration.cs" />
     <Compile Include="Areas\marketing\Controllers\dashboardController.cs" />
     <Compile Include="Areas\marketing\Controllers\recruiterController.cs" />
+    <Compile Include="Areas\marketing\Controllers\SubmissionDetailsController.cs" />
     <Compile Include="Areas\marketing\Controllers\teamleadController.cs" />
     <Compile Include="Areas\marketing\marketingAreaRegistration.cs" />
     <Compile Include="Areas\reports\reportsAreaRegistration.cs" />
@@ -246,6 +247,9 @@
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sessionModel.cs" />
+    <Compile Include="Models\SubmissionDetail.cs">
+      <DependentUpon>dbReporting.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>dbReporting.tt</DependentUpon>
     </Compile>
@@ -2159,6 +2163,11 @@
     <Content Include="Areas\sales\Views\dashboard\Index.cshtml" />
     <Content Include="Areas\marketing\Views\dashboard\StartMarketing.cshtml" />
     <Content Include="Areas\marketing\Views\dashboard\EditMarketing.cshtml" />
+    <Content Include="Areas\marketing\Views\SubmissionDetails\Create.cshtml" />
+    <Content Include="Areas\marketing\Views\SubmissionDetails\Delete.cshtml" />
+    <Content Include="Areas\marketing\Views\SubmissionDetails\Details.cshtml" />
+    <Content Include="Areas\marketing\Views\SubmissionDetails\Edit.cshtml" />
+    <Content Include="Areas\marketing\Views\SubmissionDetails\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2185,6 +2194,13 @@
     <Content Include="Views\Shared\_pageheader.cshtml" />
     <Content Include="Views\Shared\_changePassword.cshtml" />
     <Content Include="Views\Shared\_alertShow.cshtml" />
+    <Content Include="Views\Shared\_menuSalesAssociate.cshtml" />
+    <Content Include="Views\Shared\_menuSalesTL.cshtml" />
+    <Content Include="Views\Shared\_menuSales.cshtml" />
+    <Content Include="Views\Shared\_menuAdmin.cshtml" />
+    <Content Include="Views\Shared\_menuRecruiter.cshtml" />
+    <Content Include="Views\Shared\_menuMarketingTL.cshtml" />
+    <Content Include="Views\Shared\_menuMarketing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2222,6 +2238,7 @@
     <Folder Include="Content\plugins\filterizr\Spinner\" />
     <Folder Include="Content\plugins\filterizr\types\interfaces\" />
     <Folder Include="Content\plugins\filterizr\utils\" />
+    <Folder Include="Models\recurring\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

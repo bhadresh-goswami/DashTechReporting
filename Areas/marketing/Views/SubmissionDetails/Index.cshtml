@@ -1,0 +1,126 @@
+﻿@model IEnumerable<DTRS.Models.SubmissionDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Users</h3>
+        <div class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                    <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add New</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+
+                <tr>
+                    <th>
+                        Candidate Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VendorName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VendorContactNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VendorEmailId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VendorCompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClientName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PerHourRate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobLocation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Remarks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FollowUpDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusOfSubmission)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CandidateAssign.AssignedId)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CandidateAssign.CandidateMarketingDetail.CandidateMaster.CandidateName <i class="fas fa-arrow-circle-down"></i></td>
+                        <td>
+@item.Date.ToShortDateString()                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorContactNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorEmailId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VendorCompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClientName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PerHourRate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobLocation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Remarks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FollowUpDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusOfSubmission)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CandidateAssign.AssignedId)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.SubmissionId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.SubmissionId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.SubmissionId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

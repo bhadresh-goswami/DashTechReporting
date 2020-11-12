@@ -41,5 +41,6 @@ namespace DTRS.Models
         public virtual DbSet<TeamDetail> TeamDetails { get; set; }
         public virtual DbSet<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
         public virtual DbSet<CandidateAssign> CandidateAssigns { get; set; }
+        public virtual DbSet<SubmissionDetail> SubmissionDetails { get; set; }
     }
 }
