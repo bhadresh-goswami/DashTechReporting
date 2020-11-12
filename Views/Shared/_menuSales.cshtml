@@ -1,0 +1,107 @@
+﻿@using DTRS.Models
+@{
+    var session = (sessionModel)Session["User"];
+
+}
+  <li class="nav-item">
+        <a href="@session.defaultUrl" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>
+                Manage Data
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="@Url.Action("Index","Technology",new {@area = "manage"})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Technologies</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","VisaTitle",new {@area = "manage"})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Visa Title</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="@Url.Action("Index","UserManage",new {@area = "userdata"})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>User</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","TeamDetails",new {@area = "userdata"})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Teams</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-bell"></i>
+            <p>
+                Sales
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+                <a href="@Url.Action("Index","ClientManage",new {@area ="sales"})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Client</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","TeamDetails",new {@area = "userdata"})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Sales Team</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Create Target</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Sales KPI</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-bell"></i>
+            <p>
+                Reports
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Weekly Revenue</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","RecurringTypes",new {@area = "manage"})" class="nav-link">
+                    <i class="far fa-edit"></i>
+                    <p>Filter</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+   

@@ -229,7 +229,7 @@
                                                     if (d != null)
                                                     {
 
-                                                        <span>@d.TeamDetail.UserAccountDetail2.RocketName</span>
+                                                        <span>@d.TeamDetail.UserAccountDetail.RocketName</span>
 
                                                     }
                                                 }
@@ -239,7 +239,13 @@
                                         </th>
                                         <th>
 
-                                            <form method="post" name="form1" id="form1">
+                                            <form method="post" action="@Url.Action("AssignCandidate")" name="form1" id="form1">
+                                                @{
+                                                    var marketing = db.CandidateMarketingDetails.SingleOrDefault(a => a.RefCandidateId == item.CandidateId);
+
+
+                                                }
+                                                <input type="hidden" value="@marketing.MarketingId" id="refMarketingId" name="refMarketingId" />
                                                 <select class="form-control recId" name="recId" id="recId" style="min-width:200px" required>
                                                     <option value="">Select...</option>
                                                     @{
@@ -264,7 +270,7 @@
                                                     document.getElementById("form1").submit();
                                                 });
                                             </script>
-=======
+
                                             <a href="dashboard/CandidateDetails/@item.CandidateId" class="btn btn-default"><i class="fas fa-info-circle"></i></a>
 
                                         </th>

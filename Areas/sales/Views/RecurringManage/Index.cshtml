@@ -4,94 +4,100 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CandidateMaster.CandidateName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SendReminderEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaidDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReceivedIn)
-        </th>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Recurring for <b>@Model.FirstOrDefault().CandidateMaster.CandidateName</b></h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
 
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentStatus)
-        </th>
-        <th></th>
-    </tr>
+        <table class="table table-responsive">
+            <tr>
+                <th>
+                    Due Date
+                </th>
+                <th>
+                    Sent Email?
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaidDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReceivedIn)
+                </th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CandidateMaster.CandidateName)
-            </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentStatus)
+                </th>
+                @*<th></th>*@
+            </tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.DueDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SendReminderEmail)
-            </td>
-            <td colspan="3">
-                <form action="@Url.Action("Edit","RecurringManage",new { @area = "sales"})" method="post">
-                    <input type="hidden" value="@item.RecurringId" name="id" />
-                    <table class="table table-bordered">
-                        <tr>
-                            <td>
-                                <input type="date" name="paid" class="form-control" required />
-                                
-                            </td>
-                            <td>
-                                <select class="form-control" name="recIn" required>
-                                    <option value="">Select...</option>
-                                    <option value="Stripe">Stripe</option>
-                                    <option value="PayPal">PayPal</option>
-                                </select>
-                                
-                            </td>
+            @foreach (var item in Model)
+            {
+                <tr id="tr_@item.RecurringId">
+                    <td>
+                        @item.DueDate.ToShortDateString()
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SendReminderEmail)
+                    </td>
+                    <td colspan="4">
+                        <form action="@Url.Action("Edit","RecurringManage",new { @area = "sales"})" method="post">
+                            <input type="hidden" value="@item.RecurringId" name="id" />
+                            <table class="table table-bordered table-active">
+                                <tr>
+                                    <td>
+                                        <input type="text" value="@Html.DisplayFor(modelItem => item.Amount)" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="date" name="paid" class="form-control" required />
 
-                            <td>
-                                <select class="form-control" name="pstatus" required>
-                                    <option value="">Select...</option>
-                                    <option value="Paid">Paid</option>
-                                    <option value="Rejected">Rejected</option>
-                                    <option value="Rejected">Give Discount</option>
-                                </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="recIn" required>
+                                            <option value="">Select...</option>
+                                            <option value="Stripe">Stripe</option>
+                                            <option value="PayPal">PayPal</option>
+                                        </select>
 
-                            </td>
-                            <td>
-                                <button class="btn btn-primary" type="submit">Save</button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.RecurringId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.RecurringId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RecurringId })
-            </td>
-        </tr>
-    }
+                                    </td>
 
-</table>
+                                    <td>
+                                        <select class="form-control" name="pstatus" required>
+                                            <option value="">Select...</option>
+                                            <option value="Paid">Paid</option>
+                                            <option value="Rejected">Rejected</option>
+                                            <option value="Rejected">Give Discount</option>
+                                        </select>
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" type="submit">Save</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.RecurringId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.RecurringId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.RecurringId })
+                        </td>*@
+                </tr>
+                if(item.PaymentStatus == "Paid")
+                {
+                    <script>
+
+                        $("#tr_@item.RecurringId").find("input,button,textarea,select").attr("disabled", "disabled");
+
+                    </script>
+                }
+            }
+
+        </table>
+    </div>
+</div>

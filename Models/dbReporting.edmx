@@ -123,6 +123,25 @@
           <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceName" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
+        <EntityType Name="SubmissionDetails">
+          <Key>
+            <PropertyRef Name="SubmissionId" />
+          </Key>
+          <Property Name="SubmissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="200" />
+          <Property Name="VendorContactNumber" Type="varchar" MaxLength="20" />
+          <Property Name="VendorEmailId" Type="varchar" MaxLength="200" />
+          <Property Name="VendorCompanyName" Type="varchar" MaxLength="200" />
+          <Property Name="ClientName" Type="varchar" MaxLength="200" />
+          <Property Name="PerHourRate" Type="money" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="JobLocation" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="RefAssignedId" Type="int" Nullable="false" />
+          <Property Name="FollowUpDate" Type="date" Nullable="false" />
+          <Property Name="StatusOfSubmission" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -305,6 +324,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Submissio__RefAs__6B24EA82">
+          <End Role="CandidateAssign" Type="Self.CandidateAssign" Multiplicity="1" />
+          <End Role="SubmissionDetails" Type="Self.SubmissionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateAssign">
+              <PropertyRef Name="AssignedId" />
+            </Principal>
+            <Dependent Role="SubmissionDetails">
+              <PropertyRef Name="RefAssignedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__TeamDetai__Membe__49C3F6B7">
           <End Role="UserAccountDetails" Type="Self.UserAccountDetails" Multiplicity="1" />
           <End Role="TeamDetails" Type="Self.TeamDetails" Multiplicity="*" />
@@ -377,6 +408,7 @@
           <EntitySet Name="RecurringType" EntityType="Self.RecurringType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesServiceMaster" EntityType="Self.SalesServiceMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubmissionDetails" EntityType="Self.SubmissionDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeamDetails" EntityType="Self.TeamDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TechnologyMaster" EntityType="Self.TechnologyMaster" Schema="dbo" store:Type="Tables" />
@@ -425,6 +457,10 @@
           <AssociationSet Name="FK__Recurring__RefCa__300424B4" Association="Self.FK__Recurring__RefCa__300424B4">
             <End Role="CandidateMaster" EntitySet="CandidateMaster" />
             <End Role="RecurringMaster" EntitySet="RecurringMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Submissio__RefAs__6B24EA82" Association="Self.FK__Submissio__RefAs__6B24EA82">
+            <End Role="CandidateAssign" EntitySet="CandidateAssign" />
+            <End Role="SubmissionDetails" EntitySet="SubmissionDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__TeamDetai__Membe__49C3F6B7" Association="Self.FK__TeamDetai__Membe__49C3F6B7">
             <End Role="UserAccountDetails" EntitySet="UserAccountDetails" />
@@ -531,6 +567,11 @@
           <AssociationSet Name="FK__Candidate__RefTe__5CD6CB2B" Association="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B">
             <End Role="TeamDetail" EntitySet="TeamDetails" />
             <End Role="CandidateAssign" EntitySet="CandidateAssigns" />
+          </AssociationSet>
+          <EntitySet Name="SubmissionDetails" EntityType="dashReportingModel.SubmissionDetail" />
+          <AssociationSet Name="FK__Submissio__RefAs__6B24EA82" Association="dashReportingModel.FK__Submissio__RefAs__6B24EA82">
+            <End Role="CandidateAssign" EntitySet="CandidateAssigns" />
+            <End Role="SubmissionDetail" EntitySet="SubmissionDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CandidateTimeLine">
@@ -900,6 +941,7 @@
           <Property Name="refMarketingId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CandidateMarketingDetail" Relationship="dashReportingModel.FK__Candidate__refMa__5DCAEF64" FromRole="CandidateAssign" ToRole="CandidateMarketingDetail" />
           <NavigationProperty Name="TeamDetail" Relationship="dashReportingModel.FK__Candidate__RefTe__5CD6CB2B" FromRole="CandidateAssign" ToRole="TeamDetail" />
+          <NavigationProperty Name="SubmissionDetails" Relationship="dashReportingModel.FK__Submissio__RefAs__6B24EA82" FromRole="CandidateAssign" ToRole="SubmissionDetail" />
         </EntityType>
         <Association Name="FK__Candidate__refMa__5DCAEF64">
           <End Type="dashReportingModel.CandidateMarketingDetail" Role="CandidateMarketingDetail" Multiplicity="1" />
@@ -922,6 +964,38 @@
             </Principal>
             <Dependent Role="CandidateAssign">
               <PropertyRef Name="RefTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SubmissionDetail">
+          <Key>
+            <PropertyRef Name="SubmissionId" />
+          </Key>
+          <Property Name="SubmissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VendorName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VendorEmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VendorCompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PerHourRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JobTitle" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="JobLocation" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="RefAssignedId" Type="Int32" Nullable="false" />
+          <Property Name="FollowUpDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StatusOfSubmission" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CandidateAssign" Relationship="dashReportingModel.FK__Submissio__RefAs__6B24EA82" FromRole="SubmissionDetail" ToRole="CandidateAssign" />
+        </EntityType>
+        <Association Name="FK__Submissio__RefAs__6B24EA82">
+          <End Type="dashReportingModel.CandidateAssign" Role="CandidateAssign" Multiplicity="1" />
+          <End Type="dashReportingModel.SubmissionDetail" Role="SubmissionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CandidateAssign">
+              <PropertyRef Name="AssignedId" />
+            </Principal>
+            <Dependent Role="SubmissionDetail">
+              <PropertyRef Name="RefAssignedId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1112,6 +1186,26 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="RefTeamId" ColumnName="RefTeamId" />
                 <ScalarProperty Name="AssignedId" ColumnName="AssignedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubmissionDetails">
+            <EntityTypeMapping TypeName="dashReportingModel.SubmissionDetail">
+              <MappingFragment StoreEntitySet="SubmissionDetails">
+                <ScalarProperty Name="StatusOfSubmission" ColumnName="StatusOfSubmission" />
+                <ScalarProperty Name="FollowUpDate" ColumnName="FollowUpDate" />
+                <ScalarProperty Name="RefAssignedId" ColumnName="RefAssignedId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="PerHourRate" ColumnName="PerHourRate" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="VendorCompanyName" ColumnName="VendorCompanyName" />
+                <ScalarProperty Name="VendorEmailId" ColumnName="VendorEmailId" />
+                <ScalarProperty Name="VendorContactNumber" ColumnName="VendorContactNumber" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SubmissionId" ColumnName="SubmissionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

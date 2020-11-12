@@ -64,20 +64,25 @@ namespace DTRS.Areas.sales.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CandidateMaster candidateMaster, DateTime? PartialDate, decimal? PartialAmount, string ReceivedIn = "")
         {
+            sessionModel session = new sessionModel() ;
+            if (Session["User"] != null)
+            {
+                session = Session["User"] as sessionModel;
+            }
             //CandidateStatus,
             //MarketingStartDate
             //RefSalesAssociate
-            candidateMaster.CandidateStatus = "In Progress";
+            candidateMaster.CandidateStatus = "Sales";
             candidateMaster.MarketingStartDate = null;
-            candidateMaster.RefSalesAssociate = 2;
+            candidateMaster.RefSalesAssociate = session.UserId;
             db.CandidateMasters.Add(candidateMaster);
             db.SaveChanges();
 
             var recAmount = new RecurringMaster()
             {
                 Amount = candidateMaster.PaidAmount,
-                DueDate = DateTime.Now.Date,
-                PaidDate = DateTime.Now.Date,
+                DueDate = candidateMaster.Date,
+                PaidDate = candidateMaster.Date,
                 PaymentStatus = "Paid",
                 ReceivedIn = ReceivedIn,
                 RefCandidateId = candidateMaster.CandidateId,
@@ -103,7 +108,18 @@ namespace DTRS.Areas.sales.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            //if (Session["reccuring"] != null)
+            //{
+            //    int id = candidateMaster.CandidateId;
+            //    var recs = new List<RecurringMaster>();
+            //    for (int i = 0; i < recs.Count; i++)
+            //    {
+            //        recs[i].RefCandidateId = id;
+            //    }
+            //    db.RecurringMasters.AddRange(recs);
+            //    db.SaveChanges();
+            //}
+            //Session.Remove("recurring");
             var rec = db.RecurringTypes.Find(candidateMaster.RefRecurringTypeId);
             if (rec.Installment > 1)
             {
@@ -113,7 +129,7 @@ namespace DTRS.Areas.sales.Controllers
                 decimal partial = 0;
                 if (rec.Installment - 1 > 0)
                 {
-                    partial = (rec.Amount - paidAmt) / (rec.Installment - 1);
+                    partial = rec.Amount;
                 }
 
 
@@ -138,7 +154,6 @@ namespace DTRS.Areas.sales.Controllers
             }
 
 
-
             return RedirectToAction("Index");
             //ViewBag.RefRecurringTypeId = new SelectList(db.RecurringTypes, "RecurringTypeId", "RecurringTitle", candidateMaster.RefRecurringTypeId);
             //ViewBag.RefSalesAssociate = new SelectList(db.UserAccountDetails, "UserId", "FullName", candidateMaster.RefSalesAssociate);
@@ -147,6 +162,48 @@ namespace DTRS.Areas.sales.Controllers
             //return View(candidateMaster);
         }
 
+        public JsonResult getRecurring()
+        {
+            List<RecurringMaster> list = new List<RecurringMaster>();
+            if (Session["recurring"] != null)
+            {
+                list = Session["recurring"] as List<RecurringMaster>;
+            }
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+
+        public JsonResult SaveRecurring(decimal amt, DateTime date)
+        {
+            try
+            {
+                RecurringMaster recurring = new RecurringMaster();
+                List<RecurringMaster> list = new List<RecurringMaster>();
+                if (Session["recurring"] != null)
+                {
+                    list = Session["recurring"] as List<RecurringMaster>;
+                }
+                recurring.Amount = amt;
+                recurring.DueDate = date;
+                recurring.ReceivedIn = "";
+                recurring.PaidDate = null;
+                recurring.RefCandidateId = -1;
+                recurring.SendReminderEmail = false;
+                recurring.PaymentStatus = "Un-Paid";
+
+                list.Add(recurring);
+
+                Session["recurring"] = list;
+
+                return Json(list, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                var data = new Dictionary<string, string>();
+                data["Error"] = ex.Message;
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+        }
         // GET: sales/ClientManage/Edit/5
         public ActionResult Edit(int? id)
         {

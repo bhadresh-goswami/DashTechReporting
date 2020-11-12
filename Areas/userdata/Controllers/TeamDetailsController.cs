@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DTRS.Models;
+using WebGrease.Css.Extensions;
 
 namespace DTRS.Areas.userdata.Controllers
 {
@@ -39,9 +40,19 @@ namespace DTRS.Areas.userdata.Controllers
         // GET: userdata/TeamDetails/Create
         public ActionResult Create()
         {
-            ViewBag.Member = new SelectList(db.UserAccountDetails, "UserId", "FullName");
-            ViewBag.TeamLead = new SelectList(db.UserAccountDetails, "UserId", "FullName");
-            ViewBag.TeamManager = new SelectList(db.UserAccountDetails, "UserId", "FullName");
+            var data = db.UserAccountDetails;
+            var listMember = new List<UserAccountDetail>();
+            foreach (var item in data)
+            {
+                var teamData = db.TeamDetails.SingleOrDefault(a => a.Member == item.UserId);
+                if (teamData == null)
+                {
+                    listMember.Add(item);
+                }
+            }
+            ViewBag.Member = new SelectList(listMember.Where(a => a.RefRoleId == 4), "UserId", "FullName");
+            ViewBag.TeamLead = new SelectList(data.Where(a => a.RefRoleId == 3), "UserId", "FullName");
+            ViewBag.TeamManager = new SelectList(data.Where(a => a.RefRoleId == 2), "UserId", "FullName");
             return View();
         }
 
