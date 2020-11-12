@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DTRS.Models.TaskTitleMaster>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-info">Add New</a>
+</p>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Task Titles</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Task Title</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskName)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("edit")/@item.TaskTitleID" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Task Title</th>
+                    <th></th>
+
+                </tr>
+            </tfoot>
+
+
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+

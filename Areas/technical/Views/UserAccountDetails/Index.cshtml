@@ -1,0 +1,83 @@
+﻿@model IEnumerable<DTRS.Models.UserAccountDetail>
+
+@{
+    ViewBag.Title = "Technical Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-info">Add New</a>
+</p>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Technical Users</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RocketName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailId)
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocationMaster.LocationName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoleMaster.RoleTitle)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RocketName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailId)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationMaster.LocationName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleMaster.RoleTitle)
+                    </td>
+                    <td>
+                        
+                        <a href="@Url.Action("edit")/@item.UserId" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+

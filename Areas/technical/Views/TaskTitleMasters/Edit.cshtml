@@ -1,0 +1,45 @@
+﻿@model DTRS.Models.TaskTitleMaster
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form action="@Url.Action("Edit")" method="post">
+    @Html.AntiForgeryToken()
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">@ViewBag.Title</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+                @Html.HiddenFor(model => model.TaskTitleID)
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Enter Task Title Name</label>
+                        <input type="text" class="form-control" name="TaskName" id="TaskName" value="@Model.TaskName" required />
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Current Status</label>
+                        <br />
+                        <input type="checkbox" name="IsActive" value="true" checked="@Model.IsActive" />
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <a href="@Url.Action("Index")" class="btn btn-info">Back</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+
+</form>
