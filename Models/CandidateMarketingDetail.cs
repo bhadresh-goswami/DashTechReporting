@@ -14,6 +14,12 @@ namespace DTRS.Models
     
     public partial class CandidateMarketingDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CandidateMarketingDetail()
+        {
+            this.CandidateAssigns = new HashSet<CandidateAssign>();
+        }
+    
         public int MarketingId { get; set; }
         public int RefCandidateId { get; set; }
         public string MarketingEmailId { get; set; }
@@ -27,5 +33,7 @@ namespace DTRS.Models
         public string RequiredLocationList { get; set; }
     
         public virtual CandidateMaster CandidateMaster { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateAssign> CandidateAssigns { get; set; }
     }
 }

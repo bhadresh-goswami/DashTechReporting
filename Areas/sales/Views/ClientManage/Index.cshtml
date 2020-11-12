@@ -4,114 +4,134 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CandidateName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MobileNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaidAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CandidateStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Remarks)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MarketingStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VisaStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RecurringType.RecurringTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SalesServiceMaster.ServiceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TechnologyMaster.TechTitle)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Client Details</h3>
+            </div>
+            <div class="card-body">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CandidateName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MobileNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CandidateStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Remarks)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MarketingStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VisaStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecurringType.RecurringTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SalesServiceMaster.ServiceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
-        </td>
-        <td>
-            @Html.ActionLink("Recurring", "Index","RecurringManage", new { id=item.CandidateId },null) |
-            @Html.ActionLink("Details", "Details", new { id=item.CandidateId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CandidateId })
-        </td>
-    </tr>
-}
+                <div class="form-group">
+                    <a href="@Url.Action("Create")" class="btn btn-info">Add New Client</a>
+                </div>
 
-</table>
+                <table id="example2" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CandidateName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EmailId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MobileNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TotalAmount)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PaidAmount)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PaymentStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CandidateStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Remarks)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MarketingStartDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.VisaStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.RecurringType.RecurringTitle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SalesServiceMaster.ServiceName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TechnologyMaster.TechTitle)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CandidateName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MobileNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaidAmount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaymentStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CandidateStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Remarks)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MarketingStartDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VisaStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RecurringType.RecurringTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SalesServiceMaster.ServiceName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
+                                </td>
+                                <td>
+                                    @if (item.PaidAmount < item.TotalAmount)
+                                    {
+                                        @Html.ActionLink("Recurring", "Index", "RecurringManage", new { id = item.CandidateId }, null)
+                                    }
+
+                                    @*@Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

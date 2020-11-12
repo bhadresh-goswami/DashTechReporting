@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<DTRS.Models.CandidateMaster>
-
+@using DTRS.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    dashReportingEntities db = new dashReportingEntities();
 }
 
 <div class="card">
@@ -144,9 +145,11 @@
                                             @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId })
+
+
+                                            @*@Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })*@
                                         </td>
                                     </tr>
                                 }
@@ -156,12 +159,14 @@
 
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-                        <table id="marketingTable" class="table table-bordered table-striped">
+                        <table id="marketingTable" class="table table-bordered table-striped  table-responsive">
                             <thead>
                                 <tr>
-
                                     <th>
-
+                                        Recruiter
+                                    </th>
+                                    <th>
+                                        Select Recruiter
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.CandidateName)
@@ -215,9 +220,59 @@
                                 @foreach (var item in Model.Where(a => a.CandidateStatus == "In Marketing"))
                                 {
                                     <tr>
-
                                         <th>
+                                            @{
+                                                var cand = db.CandidateMarketingDetails.SingleOrDefault(a => a.RefCandidateId == item.CandidateId);
+                                                if (cand != null)
+                                                {
+                                                    var d = cand.CandidateAssigns.SingleOrDefault(a => a.IsActive);
+                                                    if (d != null)
+                                                    {
+
+                                                        <span>@d.TeamDetail.UserAccountDetail.RocketName</span>
+
+                                                    }
+                                                }
+
+                                            }
+
+                                        </th>
+                                        <th>
+
+                                            <form method="post" action="@Url.Action("AssignCandidate")" name="form1" id="form1">
+                                                @{
+                                                    var marketing = db.CandidateMarketingDetails.SingleOrDefault(a => a.RefCandidateId == item.CandidateId);
+
+
+                                                }
+                                                <input type="hidden" value="@marketing.MarketingId" id="refMarketingId" name="refMarketingId" />
+                                                <select class="form-control recId" name="recId" id="recId" style="min-width:200px" required>
+                                                    <option value="">Select...</option>
+                                                    @{
+                                                        var data = from u in db.UserAccountDetails
+                                                                   join r in db.TeamDetails
+                                                                   on u.UserId equals r.TeamManager
+                                                                   select new
+                                                                   {
+                                                                       r.TeamId,
+                                                                       r.UserAccountDetail.RocketName
+                                                                   };
+                                                        foreach (var rec in data.ToList())
+                                                        {
+                                                            <option value="@rec.TeamId">@rec.RocketName</option>
+                                                        }
+                                                    }
+
+                                                </select>
+                                            </form>
+                                            <script>
+                                                $(".recId").change(function () {
+                                                    document.getElementById("form1").submit();
+                                                });
+                                            </script>
+
                                             <a href="dashboard/CandidateDetails/@item.CandidateId" class="btn btn-default"><i class="fas fa-info-circle"></i></a>
+
                                         </th>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CandidateName)
@@ -274,7 +329,7 @@
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
 
-                        <table id="trainingTable" class="table table-bordered table-striped">
+                        <table id="trainingTable" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr>
 
@@ -404,10 +459,8 @@
     //salesTable
     //trainingTable
 
-    $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
-        $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
-    });
-    $("#marketingTable").DataTable({
+
+    var dt1 = $("#marketingTable").DataTable({
         "responsive": true,
         "autoWidth": false,
         "paging": true,
@@ -421,7 +474,7 @@
         ]
     });
 
-    $("#salesTable").DataTable({
+    var dt2 = $("#salesTable").DataTable({
         "responsive": true,
         "autoWidth": false,
         "paging": true,
@@ -434,7 +487,8 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
-    $("#trainingTable").DataTable({
+
+    var dt3 = $("#trainingTable").DataTable({
         "responsive": true,
         "autoWidth": false,
         "paging": true,
@@ -447,4 +501,11 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
+
+    //$("li").click(function () {
+    //    dt1.responsive.recalc();
+    //    dt2.responsive.recalc();
+    //    dt3.responsive.recalc();
+    //    alert("a");
+    //});
 </script>

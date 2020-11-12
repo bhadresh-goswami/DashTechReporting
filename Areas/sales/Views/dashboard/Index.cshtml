@@ -16,11 +16,11 @@
             <div class="card-header p-0 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" 
+                        <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill"
                            href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Sales</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" 
+                        <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill"
                            href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Marketing</a>
                     </li>
                     <li class="nav-item">
@@ -28,7 +28,7 @@
                            href="#custom-tabs-four-messages" role="tab" aria-controls="custom-tabs-four-messages" aria-selected="false">Training</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill" 
+                        <a class="nav-link" id="custom-tabs-four-settings-tab" data-toggle="pill"
                            href="#custom-tabs-four-settings" role="tab" aria-controls="custom-tabs-four-settings" aria-selected="false">Placed</a>
                     </li>
                 </ul>
@@ -37,11 +37,14 @@
                 <div class="tab-content" id="custom-tabs-four-tabContent">
                     <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
 
-
                         <table class="table table-bordered table-striped exampleTable">
                             <thead>
                                 <tr>
-
+                                    <th></th>
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.CandidateName)
                                     </th>
@@ -57,9 +60,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaidAmount)
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Date)
-                                    </th>
+
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaymentStatus)
                                     </th>
@@ -95,6 +96,18 @@
                                 {
                                     <tr>
                                         <td>
+                                            <button class="btn btn-danger">Details</button>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","RecurringManage",new { @area = "sales", @id = item.CandidateId})">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            @item.Date.ToShortDateString()
+                                        </td>
+                                        <td>
                                             @Html.DisplayFor(modelItem => item.CandidateName)
                                         </td>
                                         <td>
@@ -108,9 +121,6 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaidAmount)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Date)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaymentStatus)
@@ -140,9 +150,10 @@
                                             @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+
+                                            @*@Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })*@
                                         </td>
                                     </tr>
                                 }
@@ -150,12 +161,16 @@
                         </table>
 
 
+
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-                        <table class="table table-bordered table-striped exampleTable">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
-
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.CandidateName)
                                     </th>
@@ -171,9 +186,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaidAmount)
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Date)
-                                    </th>
+
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaymentStatus)
                                     </th>
@@ -205,9 +218,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.Where(a => a.CandidateStatus == "Marketing"))
+                                @foreach (var item in Model.Where(a => a.CandidateStatus == "In Marketing"))
                                 {
                                     <tr>
+
+                                        <td>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","RecurringManage",new { @area = "sales", @id = item.CandidateId})">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            @item.Date.ToShortDateString()
+                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CandidateName)
                                         </td>
@@ -222,9 +245,6 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaidAmount)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Date)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaymentStatus)
@@ -254,9 +274,10 @@
                                             @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+
+                                            @*@Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })*@
                                         </td>
                                     </tr>
                                 }
@@ -265,10 +286,13 @@
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-messages" role="tabpanel" aria-labelledby="custom-tabs-four-messages-tab">
 
-                        <table class="table table-bordered table-striped exampleTable">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
-
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.CandidateName)
                                     </th>
@@ -284,9 +308,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaidAmount)
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Date)
-                                    </th>
+
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaymentStatus)
                                     </th>
@@ -318,9 +340,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.Where(a => a.CandidateStatus == "Training"))
+                                @foreach (var item in Model.Where(a => a.CandidateStatus == "In Training"))
                                 {
                                     <tr>
+
+                                        <td>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","RecurringManage",new { @area = "sales", @id = item.CandidateId})">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            @item.Date.ToShortDateString()
+                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CandidateName)
                                         </td>
@@ -335,9 +367,6 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaidAmount)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Date)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaymentStatus)
@@ -367,9 +396,10 @@
                                             @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+
+                                            @*@Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })*@
                                         </td>
                                     </tr>
                                 }
@@ -380,10 +410,13 @@
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-four-settings" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
 
-                        <table class="table table-bordered table-striped exampleTable">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
-
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.CandidateName)
                                     </th>
@@ -399,9 +432,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaidAmount)
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Date)
-                                    </th>
+
                                     <th>
                                         @Html.DisplayNameFor(model => model.PaymentStatus)
                                     </th>
@@ -436,6 +467,19 @@
                                 @foreach (var item in Model.Where(a => a.CandidateStatus == "Placed"))
                                 {
                                     <tr>
+
+                                        <td>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","RecurringManage",new { @area = "sales", @id = item.CandidateId})">
+                                                <i class="fas fa-dollar-sign"></i>
+                                            </a>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","RecurringManage",new { @area = "sales", @id = item.CandidateId})">
+                                                Placed
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            @item.Date.ToShortDateString()
+                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CandidateName)
                                         </td>
@@ -450,9 +494,6 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaidAmount)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Date)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.PaymentStatus)
@@ -482,9 +523,10 @@
                                             @Html.DisplayFor(modelItem => item.TechnologyMaster.TechTitle)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })
+
+                                            @*@Html.ActionLink("Edit", "Edit", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.CandidateId }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.CandidateId })*@
                                         </td>
                                     </tr>
                                 }

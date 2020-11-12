@@ -12,8 +12,8 @@ namespace DTRS.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
-            return View();
+            return RedirectToAction("login","user",new { @area = ""});
+            //return View();
         }
 
         public ActionResult admin()

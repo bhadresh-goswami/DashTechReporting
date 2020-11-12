@@ -1,7 +1,104 @@
-﻿
+﻿@model IEnumerable<DTRS.Models.CandidateMarketingDetail>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Users</h3>
+        <div class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                    <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add New</a>
+                </li>
+            </ul>
 
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MarketingEmailId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MarketingContactNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OriginalResume)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MarketingResume)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InsertedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OtherRemarks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MarketingStatus)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocationConcern)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RequiredLocationList)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CandidateMaster.CandidateName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarketingEmailId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarketingContactNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OriginalResume)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarketingResume)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InsertedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OtherRemarks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarketingStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocationConcern)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequiredLocationList)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CandidateMaster.CandidateName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MarketingId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.MarketingId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MarketingId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

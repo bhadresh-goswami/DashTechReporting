@@ -22,6 +22,11 @@ namespace DTRS.Areas.sales.Controllers
                 return RedirectToAction("Index", "ClientManage", new { @area = "sales" });
             }
             var recurringMasters = db.RecurringMasters.Where(a => a.RefCandidateId == id).Include(r => r.CandidateMaster);
+            if(recurringMasters.ToList().Count==0)
+            {
+                TempData["Warning"] = "Details not Found!";
+                return RedirectToAction("Index", "ClientManage", new { @area = "sales" });
+            }
             return View(recurringMasters.ToList());
         }
 
@@ -92,6 +97,10 @@ namespace DTRS.Areas.sales.Controllers
             recurringMaster.PaymentStatus = pstatus;
             recurringMaster.ReceivedIn = recIn;
             
+            db.SaveChanges();
+
+            var client = db.CandidateMasters.Find(recurringMaster.RefCandidateId);
+            client.PaidAmount += recurringMaster.Amount;
             db.SaveChanges();
 
             return RedirectToAction("index", "RecurringManage", new { @id = id, @area = "Sales" });

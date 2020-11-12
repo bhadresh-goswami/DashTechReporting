@@ -12,24 +12,23 @@ namespace DTRS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TeamDetail
+    public partial class CandidateAssign
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TeamDetail()
+        public CandidateAssign()
         {
-            this.CandidateAssigns = new HashSet<CandidateAssign>();
+            this.SubmissionDetails = new HashSet<SubmissionDetail>();
         }
     
-        public int TeamId { get; set; }
-        public int Member { get; set; }
-        public int TeamLead { get; set; }
-        public int TeamManager { get; set; }
-        public string Department { get; set; }
+        public int AssignedId { get; set; }
+        public int RefTeamId { get; set; }
+        public System.DateTime Date { get; set; }
+        public bool IsActive { get; set; }
+        public int refMarketingId { get; set; }
     
-        public virtual UserAccountDetail UserAccountDetail { get; set; }
-        public virtual UserAccountDetail UserAccountDetail1 { get; set; }
-        public virtual UserAccountDetail UserAccountDetail2 { get; set; }
+        public virtual CandidateMarketingDetail CandidateMarketingDetail { get; set; }
+        public virtual TeamDetail TeamDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CandidateAssign> CandidateAssigns { get; set; }
+        public virtual ICollection<SubmissionDetail> SubmissionDetails { get; set; }
     }
 }

@@ -15,7 +15,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" action="@Url.Action("create")" method="post">
+            <form role="form" action="@Url.Action("create","clientmanage",new { @area = "sales"})" method="post">
                 <div class="card-body">
                     @Html.AntiForgeryToken()
 
@@ -208,6 +208,88 @@
         </div>
 
     </div>
+    <!--<div class="col-md-4">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Add Recurring</h3>
+            </div>-->
+            <!-- /.card-header -->
+            <!-- form start -->
+            <!--<form role="form" action="@Url.Action("recurringadd","clientmanage",new { @area = "sales"})" method="post">
+                <div class="card-body">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label class="form-label">Due Date</label>
+                            <div class="">
+                                <input type="date" name="DueDate" id="DueDate" class="form-control" required />
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Amount</label>
+                            <div class="">
+                                <input type="number" name="Amount" id="Amount" class="form-control" required />
+                            </div>
+                        </div>
+
+
+                        <div class="card-footer">
+                            <button type="button" onclick="SaveRecurring()" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                    <script>
+                        function SaveRecurring() {
+                            var amount = $("#Amount").val();
+                            var date = $("#DueDate").val();
+
+                            $.post("@Url.Action("SaveRecurring","ClientManage",new { @area = "sales"})", { amt: amount, date: date }, function (ret) {
+
+                                //alert(ret);
+                                if (ret.Error != undefined) {
+                                    alert(ret);
+                                }
+                                else {
+                                    getData();
+                                }
+                            });
+                        }
+                        getData();
+                        function getData() {
+                            $.get("@Url.Action("getRecurring", "ClientManage",new { @area = "sales"})", null, function (data) {
+
+                                        var tr = "";
+                                        $.each(data, function (key, val) {
+                                            tr += `<tr><td>${key+1}</td>`;
+                                            tr += `<td>${val.Amount}</td>`;
+                                            var d = new Date(parseInt(val.DueDate.replace("/Date(", "").replace(")/", ""), 10));
+                                            tr += `<td>${d.toLocaleDateString()}</td></tr>`;
+                                        });
+                                        $("#recurring").html(tr);
+                                    })
+                        }
+                    </script>
+                    <table class="table table-responsive">
+                        <tr>
+                            <th>Installment</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                        <tbody id="recurring">
+                        </tbody>
+                    </table>
+
+                </div>
+            </form>
+
+        </div>
+    </div>-->
 </div>
 
 <script>
@@ -221,12 +303,12 @@
             if (i > 1) {
                 return;
             }
-               
+
             if (paidamt < amt) {
                 $("#PartialAmount").val(amt - paidamt);
                 $("#partialPaymentDiv").fadeIn(500);
             }
         });
-        
+
     });
 </script>
