@@ -1,0 +1,218 @@
+﻿@using DTRS.Models
+@{
+    var session = (sessionModel)Session["User"];
+
+}
+<li class="nav-item">
+    <a href="@session.defaultUrl" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Dashboard</p>
+    </a>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-database"></i>
+        <p>
+            Manage Data
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="@Url.Action("Index","Roles",new {@area = "manage"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Roles</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","JobPortal",new {@area = "manage"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Job Portal</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","Technology",new {@area = "manage"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Technologies</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","VisaTitle",new {@area = "manage"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Visa Title</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="@Url.Action("Index","Location",new {@area = "manage"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Location</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","UserManage",new {@area = "userdata"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>User</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","TeamDetails",new {@area = "userdata"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Teams</p>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-bell"></i>
+        <p>
+            Marketing
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Marketing Team</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Marketing Target</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Marketing KPI</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Send Target Reminder</p>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-bell"></i>
+        <p>
+            Sales
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Sales Team</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","RecurringTypes",new {@area = "manage"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Recuuring Types</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","SalesService",new {@area = "manage"})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Sales Service</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Sales Target</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Sales KPI</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Send Target Reminder</p>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-passport"></i>
+        <p>
+            Sales Reports
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Branch Wise</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Team Wise</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Sales Associate Wise</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Total Revenue Branch Wise</p>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-passport"></i>
+        <p>
+            Marketing Reports
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Branch Wise</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Team Wise</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Recruiter Wise</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("Index","",new {@area = ""})" class="nav-link">
+                <i class="far fa-edit"></i>
+                <p>Total PO</p>
+            </a>
+        </li>
+    </ul>
+</li>
+

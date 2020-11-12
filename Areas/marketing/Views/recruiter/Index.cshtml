@@ -1,7 +1,109 @@
-﻿
+﻿@model IEnumerable<DTRS.Models.CandidateAssign>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Users</h3>
+        <div class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                    <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add New</a>
+                </li>
+            </ul>
 
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+
+                <tr>
+                    <th>
+                        Candidate Name
+                    </th>
+                    <th>
+                        Email Id
+                    </th>
+                    <th>
+                        Contact Number
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CandidateMarketingDetail.MarketingEmailId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TeamDetail.Department)
+                    </th>
+                    <th>
+                        Location Concern?
+                    </th>
+                    <th>Resume</th>
+                    <th>Submission</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.CandidateMarketingDetail.CandidateMaster.CandidateName
+                        </td>
+                        <td>
+                            @item.CandidateMarketingDetail.MarketingEmailId
+                        </td>
+                        <td>
+                            @item.CandidateMarketingDetail.MarketingContactNumber
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CandidateMarketingDetail.MarketingEmailId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TeamDetail.Department)
+                        </td>
+                        <td>
+                            @{
+                                var loc = item.CandidateMarketingDetail.LocationConcern ? "Yes" : "No";
+                                <label>@loc</label>
+                            }
+                            <br />
+                            [
+                            @item.CandidateMarketingDetail.RequiredLocationList
+                            ]
+
+                        </td>
+
+                        <td>
+
+                            <a href="@item.CandidateMarketingDetail.MarketingResume">Download</a>
+
+                        </td>
+
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.AssignedId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.AssignedId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.AssignedId })*@
+                            <a href="@Url.Action("Create","SubmissionDetails", new { @id = item.AssignedId})"><i class="fas fa-newspaper"></i> New Submission</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -14,6 +14,12 @@ namespace DTRS.Models
     
     public partial class CandidateAssign
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CandidateAssign()
+        {
+            this.SubmissionDetails = new HashSet<SubmissionDetail>();
+        }
+    
         public int AssignedId { get; set; }
         public int RefTeamId { get; set; }
         public System.DateTime Date { get; set; }
@@ -22,5 +28,7 @@ namespace DTRS.Models
     
         public virtual CandidateMarketingDetail CandidateMarketingDetail { get; set; }
         public virtual TeamDetail TeamDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubmissionDetail> SubmissionDetails { get; set; }
     }
 }

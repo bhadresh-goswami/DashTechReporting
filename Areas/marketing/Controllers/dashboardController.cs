@@ -12,11 +12,38 @@ namespace DTRS.Areas.marketing.Controllers
     public class dashboardController : Controller
     {
         dashReportingEntities db = new dashReportingEntities();
+
+        [HttpPost]
+        public ActionResult AssignCandidate(int refMarketingId, int recId)
+        {
+            try
+            {
+                CandidateAssign candidateAssign = new CandidateAssign();
+                candidateAssign.Date = DateTime.Now.Date;
+                candidateAssign.IsActive = true;
+                candidateAssign.refMarketingId = refMarketingId;
+                candidateAssign.RefTeamId = recId;
+                db.CandidateAssigns.Add(candidateAssign);
+                db.SaveChanges();
+                TempData["Message"] = "Candidate Assinged!";
+            } 
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                
+            }
+            return RedirectToAction("Index");
+        }
+
+
         // GET: marketing/dashboard
         public ActionResult Index()
         {
+            var user = new sessionModel();
+            user = Session["User"] as sessionModel;
+            var current = db.UserAccountDetails.Find(user.UserId);
             var date = DateTime.Now.Date;
-            var data = db.CandidateMasters.ToList();
+            var data = db.CandidateMasters.Where(a=>a.UserAccountDetail.RefLocationId == current.RefLocationId).ToList();
             return View(data);
         }
 
