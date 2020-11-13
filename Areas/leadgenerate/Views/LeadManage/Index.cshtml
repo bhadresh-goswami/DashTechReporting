@@ -1,0 +1,114 @@
+﻿@model IEnumerable<DTRS.Models.LeadMaster>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">List of Job Portals</h3>
+
+        <div class="card-tools">
+            <a type="button" class="btn btn-warning"  href="@Url.Action("Create")"><i class="fas fa-plus"></i> Add New Lead</a>
+
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeadDate)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.CandidateName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TechnologyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssignedToSalesAssociate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeadType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LinkedInURL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CandidateNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LinkedInEmailid)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.CandidateLocation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Remarks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Feedback)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserAccountDetail.FullName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeadDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CandidateName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TechnologyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssignedToSalesAssociate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeadType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkedInURL)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CandidateNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LinkedInEmailid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CandidateLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Remarks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Feedback)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAccountDetail.FullName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Lid }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Lid }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Lid })
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

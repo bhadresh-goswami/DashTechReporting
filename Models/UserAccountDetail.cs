@@ -22,6 +22,7 @@ namespace DTRS.Models
             this.TeamDetails = new HashSet<TeamDetail>();
             this.TeamDetails1 = new HashSet<TeamDetail>();
             this.TeamDetails2 = new HashSet<TeamDetail>();
+            this.LeadMasters = new HashSet<LeadMaster>();
         }
     
         public int UserId { get; set; }
@@ -48,5 +49,7 @@ namespace DTRS.Models
         public virtual ICollection<TeamDetail> TeamDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeamDetail> TeamDetails2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeadMaster> LeadMasters { get; set; }
     }
 }
