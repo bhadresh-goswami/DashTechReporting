@@ -13,7 +13,7 @@ namespace DTRS.Areas.technical.Controllers
 {
     public class TaskTitleMastersController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: technical/TaskTitleMasters
         public async Task<ActionResult> Index()

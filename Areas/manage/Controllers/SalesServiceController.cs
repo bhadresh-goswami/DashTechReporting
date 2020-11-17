@@ -12,7 +12,7 @@ namespace DTRS.Areas.manage.Controllers
 {
     public class SalesServiceController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: manage/SalesService
         public ActionResult Index()

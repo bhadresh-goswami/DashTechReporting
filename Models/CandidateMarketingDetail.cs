@@ -32,8 +32,8 @@ namespace DTRS.Models
         public bool LocationConcern { get; set; }
         public string RequiredLocationList { get; set; }
     
-        public virtual CandidateMaster CandidateMaster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CandidateAssign> CandidateAssigns { get; set; }
+        public virtual CandidateMaster CandidateMaster { get; set; }
     }
 }

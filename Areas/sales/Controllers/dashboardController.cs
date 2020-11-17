@@ -9,7 +9,7 @@ namespace DTRS.Areas.sales.Controllers
 {
     public class dashboardController : Controller
     {
-        dashReportingEntities db = new dashReportingEntities();
+        DTRSDatabaseEntities db = new DTRSDatabaseEntities();
         // GET: sales/dashboard
         public ActionResult Index()
         {

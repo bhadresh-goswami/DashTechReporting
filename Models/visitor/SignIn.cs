@@ -16,7 +16,7 @@ namespace DTRS.Models.visitor
         {
             try
             {
-                dashReportingEntities db = new dashReportingEntities();
+                DTRSDatabaseEntities db = new DTRSDatabaseEntities();
                 UserAccountDetail user = db.UserAccountDetails.SingleOrDefault(asd => asd.EmailId == UserName && asd.Password == Password);
                 if (user != null)
                 {

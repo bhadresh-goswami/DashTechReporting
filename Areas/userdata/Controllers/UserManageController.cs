@@ -12,7 +12,7 @@ namespace DTRS.Areas.userdata.Controllers
 {
     public class UserManageController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         [HttpPost]
         public ActionResult ChangePassword(string old, string newp, int? id)

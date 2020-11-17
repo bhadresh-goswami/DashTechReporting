@@ -12,7 +12,7 @@ namespace DTRS.Areas.manage.Controllers
 {
     public class RecurringTypesController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: manage/RecurringTypes
         public ActionResult Index()
