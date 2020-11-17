@@ -13,10 +13,10 @@ namespace DTRS.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dashReportingEntities : DbContext
+    public partial class DTRSDatabaseEntities : DbContext
     {
-        public dashReportingEntities()
-            : base("name=dashReportingEntities")
+        public DTRSDatabaseEntities()
+            : base("name=DTRSDatabaseEntities")
         {
         }
     
@@ -25,27 +25,26 @@ namespace DTRS.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CandidateAssign> CandidateAssigns { get; set; }
+        public virtual DbSet<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
+        public virtual DbSet<CandidateMaster> CandidateMasters { get; set; }
         public virtual DbSet<CandidateTimeLine> CandidateTimeLines { get; set; }
         public virtual DbSet<CommentDetail> CommentDetails { get; set; }
+        public virtual DbSet<DepartmentMaster> DepartmentMasters { get; set; }
         public virtual DbSet<JobPortalMaster> JobPortalMasters { get; set; }
+        public virtual DbSet<LeadMaster> LeadMasters { get; set; }
         public virtual DbSet<LocationMaster> LocationMasters { get; set; }
         public virtual DbSet<RecurringMaster> RecurringMasters { get; set; }
         public virtual DbSet<RecurringType> RecurringTypes { get; set; }
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
         public virtual DbSet<SalesServiceMaster> SalesServiceMasters { get; set; }
+        public virtual DbSet<SubmissionDetail> SubmissionDetails { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TaskMaster> TaskMasters { get; set; }
+        public virtual DbSet<TaskTitleMaster> TaskTitleMasters { get; set; }
+        public virtual DbSet<TeamDetail> TeamDetails { get; set; }
         public virtual DbSet<TechnologyMaster> TechnologyMasters { get; set; }
         public virtual DbSet<UserAccountDetail> UserAccountDetails { get; set; }
         public virtual DbSet<VisaTitleMaster> VisaTitleMasters { get; set; }
-        public virtual DbSet<CandidateMaster> CandidateMasters { get; set; }
-        public virtual DbSet<TeamDetail> TeamDetails { get; set; }
-        public virtual DbSet<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
-        public virtual DbSet<CandidateAssign> CandidateAssigns { get; set; }
-        public virtual DbSet<SubmissionDetail> SubmissionDetails { get; set; }
-
-        public virtual DbSet<LeadMaster> LeadMasters { get; set; }
-
-        public virtual DbSet<TaskTitleMaster> TaskTitleMasters { get; set; }
-
     }
 }

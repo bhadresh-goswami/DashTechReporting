@@ -13,7 +13,7 @@ namespace DTRS.Areas.technical.Controllers
 {
     public class UserAccountDetailsController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: technical/UserAccountDetails
         public async Task<ActionResult> Index()

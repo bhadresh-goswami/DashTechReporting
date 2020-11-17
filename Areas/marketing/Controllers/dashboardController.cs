@@ -11,7 +11,7 @@ namespace DTRS.Areas.marketing.Controllers
 {
     public class dashboardController : Controller
     {
-        dashReportingEntities db = new dashReportingEntities();
+        DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         [HttpPost]
         public ActionResult AssignCandidate(int refMarketingId, int recId)

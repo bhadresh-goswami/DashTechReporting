@@ -12,15 +12,9 @@ namespace DTRS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CandidateTimeLine
+    public partial class DepartmentMaster
     {
-        public int TimeLineId { get; set; }
-        public int RefCandidateId { get; set; }
-        public string Status { get; set; }
-        public System.DateTime Date { get; set; }
-        public int ChangedBy { get; set; }
-    
-        public virtual CandidateMaster CandidateMaster { get; set; }
-        public virtual UserAccountDetail UserAccountDetail { get; set; }
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
     }
 }

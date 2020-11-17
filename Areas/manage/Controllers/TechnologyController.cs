@@ -12,7 +12,7 @@ namespace DTRS.Areas.manage.Controllers
 {
     public class TechnologyController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: manage/Technology
         public ActionResult Index()

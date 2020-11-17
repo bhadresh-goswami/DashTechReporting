@@ -13,7 +13,7 @@ namespace DTRS.Areas.userdata.Controllers
 {
     public class TeamDetailsController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: userdata/TeamDetails
         public ActionResult Index()

@@ -12,7 +12,7 @@ namespace DTRS.Areas.manage.Controllers
 {
     public class LocationController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: manage/Location
         public ActionResult Index()

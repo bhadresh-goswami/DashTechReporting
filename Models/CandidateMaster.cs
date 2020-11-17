@@ -17,10 +17,10 @@ namespace DTRS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CandidateMaster()
         {
+            this.CandidateMarketingDetails = new HashSet<CandidateMarketingDetail>();
             this.CandidateTimeLines = new HashSet<CandidateTimeLine>();
             this.CommentDetails = new HashSet<CommentDetail>();
             this.RecurringMasters = new HashSet<RecurringMaster>();
-            this.CandidateMarketingDetails = new HashSet<CandidateMarketingDetail>();
         }
     
         public int CandidateId { get; set; }
@@ -41,6 +41,8 @@ namespace DTRS.Models
         public int TechnologyId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CandidateTimeLine> CandidateTimeLines { get; set; }
         public virtual RecurringType RecurringType { get; set; }
         public virtual UserAccountDetail UserAccountDetail { get; set; }
@@ -50,7 +52,5 @@ namespace DTRS.Models
         public virtual ICollection<CommentDetail> CommentDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RecurringMaster> RecurringMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CandidateMarketingDetail> CandidateMarketingDetails { get; set; }
     }
 }

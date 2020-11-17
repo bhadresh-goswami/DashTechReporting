@@ -10,7 +10,7 @@ namespace DTRS.Areas.marketing.Controllers
 {
     public class recruiterController : Controller
     {
-        dashReportingEntities db = new dashReportingEntities();
+        DTRSDatabaseEntities db = new DTRSDatabaseEntities();
         // GET: marketing/recruiter
         public ActionResult Index(DateTime? date)
         {

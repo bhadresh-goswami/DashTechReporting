@@ -12,7 +12,7 @@ namespace DTRS.Areas.leadgenerate.Controllers
 {
     public class LeadManageController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: leadgenerate/LeadManage
         public ActionResult Index()

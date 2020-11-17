@@ -12,7 +12,7 @@ namespace DTRS.Areas.marketing.Controllers
 {
     public class SubmissionDetailsController : Controller
     {
-        private dashReportingEntities db = new dashReportingEntities();
+        private DTRSDatabaseEntities db = new DTRSDatabaseEntities();
 
         // GET: marketing/SubmissionDetails
         public ActionResult Index()
